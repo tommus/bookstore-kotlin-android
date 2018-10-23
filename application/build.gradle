@@ -1,0 +1,124 @@
+//region Startup Plugins
+
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-android-extensions"
+
+//endregion
+
+//region Android
+
+android {
+
+    //region Build Configuration
+
+    signingConfigs {
+        release {
+            keyAlias "todo"
+            keyPassword "todo.jks"
+            storePassword "todo.jks"
+            storeFile rootProject.file("settings/keystore/todo.jks")
+        }
+    }
+
+    buildTypes {
+        debug {
+            useProguard false
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile("proguard-android.txt"),
+                    rootProject.file("settings/proguard/proguard-rules.pro")
+        }
+        release {
+            useProguard true
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile("proguard-android.txt"),
+                    rootProject.file("settings/proguard/proguard-rules.pro")
+        }
+    }
+
+    //endregion
+
+    //region Compile Options
+
+    compileSdkVersion deps.build_versions.compile_sdk
+
+    //endregion
+
+    //region Default Config
+
+    defaultConfig {
+        minSdkVersion deps.build_versions.min_sdk
+        targetSdkVersion deps.build_versions.target_sdk
+        applicationId "co.windly.bookstore"
+    }
+
+    //endregion
+
+    //region Flavor Dimensions
+
+    flavorDimensions "todo"
+
+    //endregion
+
+    //region Product Flavors
+
+    productFlavors {
+        dev {
+            applicationIdSuffix ".dev"
+            versionCode = getAutoVersionCode()
+            versionName = getAutoVersionName() + " (dev)"
+            dimension "todo"
+        }
+        prod {
+            versionCode = getAutoVersionCode()
+            versionName = getAutoVersionName()
+            dimension "todo"
+        }
+    }
+
+    //endregion
+}
+
+//endregion
+
+//region Dependencies
+
+dependencies {
+
+    //region Application Files
+
+    implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
+
+    //endregion
+
+    //region Application Modules
+
+    implementation project(":data")
+
+    //endregion
+
+    //region Kotlin
+
+    implementation deps.kotlin.stdlib_jdk7
+
+    //region Ui
+
+    implementation deps.androidx.appcompat_v7
+    implementation deps.androidx.constraint
+
+    //endregion
+}
+repositories {
+    mavenCentral()
+}
+
+//endregion
+
+//region Finale Plugins
+
+// TODO:
+
+//endregion

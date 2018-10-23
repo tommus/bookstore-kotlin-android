@@ -1,0 +1,94 @@
+//region Dependencies
+
+def deps = [:]
+ext.deps = deps
+
+//region Versions
+
+def versions = [:]
+versions.android_gradle_plugin = "3.2.1"
+versions.androidx = "1.0.0"
+versions.constraint = "1.1.2"
+versions.kotlin = "1.2.71"
+deps.versions = versions
+
+//endregion
+
+//region AndroidX
+
+def androidx = [:]
+androidx.appcompat_v7 = "androidx.appcompat:appcompat:$versions.androidx"
+androidx.constraint = "androidx.constraintlayout:constraintlayout:$versions.constraint"
+deps.androidx = androidx
+
+//endregion
+
+//region Build
+
+def build = [:]
+build.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+build.kotlin_gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+deps.build = build
+
+def build_versions = [:]
+build_versions.compile_sdk = 28
+build_versions.min_sdk = 21
+build_versions.target_sdk = 28
+deps.build_versions = build_versions
+
+//endregion
+
+//region Kotlin
+
+def kotlin = [:]
+kotlin.stdlib_jdk7 = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+deps.kotlin = kotlin
+
+//endregion
+
+//region Miscellaneous
+
+def misc = [:]
+// TODO:
+deps.misc = misc
+
+//endregion
+
+//region Retrofit
+
+def retrofit = [:]
+// TODO:
+deps.retrofit = retrofit
+
+//endregion
+
+//region Room
+
+def room = [:]
+// TODO:
+deps.room = room
+
+//endregion
+
+//region Ui
+
+def ui = [:]
+// TODO:
+deps.ui = ui
+
+//endregion
+
+//endregion
+
+//region Repositories
+
+static def addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.jcenter()
+    handler.mavenCentral()
+    // TODO:
+}
+
+ext.addRepos = this.&addRepos
+
+//endregion
