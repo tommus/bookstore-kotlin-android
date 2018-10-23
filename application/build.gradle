@@ -10,76 +10,76 @@ apply plugin: "kotlin-android-extensions"
 
 android {
 
-    //region Build Configuration
+  //region Build Configuration
 
-    signingConfigs {
-        release {
-            keyAlias "todo"
-            keyPassword "todo.jks"
-            storePassword "todo.jks"
-            storeFile rootProject.file("settings/keystore/todo.jks")
-        }
+  signingConfigs {
+    release {
+      keyAlias "todo"
+      keyPassword "todo.jks"
+      storePassword "todo.jks"
+      storeFile rootProject.file("settings/keystore/todo.jks")
     }
+  }
 
-    buildTypes {
-        debug {
-            useProguard false
-            minifyEnabled false
-            shrinkResources false
-            proguardFiles getDefaultProguardFile("proguard-android.txt"),
-                    rootProject.file("settings/proguard/proguard-rules.pro")
-        }
-        release {
-            useProguard true
-            minifyEnabled true
-            shrinkResources true
-            signingConfig signingConfigs.release
-            proguardFiles getDefaultProguardFile("proguard-android.txt"),
-                    rootProject.file("settings/proguard/proguard-rules.pro")
-        }
+  buildTypes {
+    debug {
+      useProguard false
+      minifyEnabled false
+      shrinkResources false
+      proguardFiles getDefaultProguardFile("proguard-android.txt"),
+        rootProject.file("settings/proguard/proguard-rules.pro")
     }
-
-    //endregion
-
-    //region Compile Options
-
-    compileSdkVersion deps.build_versions.compile_sdk
-
-    //endregion
-
-    //region Default Config
-
-    defaultConfig {
-        minSdkVersion deps.build_versions.min_sdk
-        targetSdkVersion deps.build_versions.target_sdk
-        applicationId "co.windly.bookstore"
+    release {
+      useProguard true
+      minifyEnabled true
+      shrinkResources true
+      signingConfig signingConfigs.release
+      proguardFiles getDefaultProguardFile("proguard-android.txt"),
+        rootProject.file("settings/proguard/proguard-rules.pro")
     }
+  }
 
-    //endregion
+  //endregion
 
-    //region Flavor Dimensions
+  //region Compile Options
 
-    flavorDimensions "todo"
+  compileSdkVersion deps.build_versions.compile_sdk
 
-    //endregion
+  //endregion
 
-    //region Product Flavors
+  //region Default Config
 
-    productFlavors {
-        dev {
-            applicationIdSuffix ".dev"
-            versionCode = getAutoVersionCode()
-            versionName = getAutoVersionName() + " (dev)"
-            dimension "todo"
-        }
-        prod {
-            versionCode = getAutoVersionCode()
-            versionName = getAutoVersionName()
-            dimension "todo"
-        }
+  defaultConfig {
+    minSdkVersion deps.build_versions.min_sdk
+    targetSdkVersion deps.build_versions.target_sdk
+    applicationId "co.windly.bookstore"
+  }
+
+  //endregion
+
+  //region Flavor Dimensions
+
+  flavorDimensions "todo"
+
+  //endregion
+
+  //region Product Flavors
+
+  productFlavors {
+    dev {
+      applicationIdSuffix ".dev"
+      versionCode = getAutoVersionCode()
+      versionName = getAutoVersionName() + " (dev)"
+      dimension "todo"
     }
+    prod {
+      versionCode = getAutoVersionCode()
+      versionName = getAutoVersionName()
+      dimension "todo"
+    }
+  }
 
-    //endregion
+  //endregion
 }
 
 //endregion
@@ -88,31 +88,32 @@ android {
 
 dependencies {
 
-    //region Application Files
+  //region Application Files
 
-    implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
+  implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
 
-    //endregion
+  //endregion
 
-    //region Application Modules
+  //region Application Modules
 
-    implementation project(":data")
+  implementation project(":data")
 
-    //endregion
+  //endregion
 
-    //region Kotlin
+  //region Kotlin
 
-    implementation deps.kotlin.stdlib_jdk7
+  implementation deps.kotlin.stdlib_jdk7
 
-    //region Ui
+  //region Ui
 
-    implementation deps.androidx.appcompat_v7
-    implementation deps.androidx.constraint
+  implementation deps.androidx.appcompat
+  implementation deps.androidx.constraint
+  implementation deps.ui.material
 
-    //endregion
+  //endregion
 }
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 //endregion

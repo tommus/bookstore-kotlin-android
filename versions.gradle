@@ -10,6 +10,7 @@ versions.android_gradle_plugin = "3.2.1"
 versions.androidx = "1.0.0"
 versions.constraint = "1.1.2"
 versions.kotlin = "1.2.71"
+versions.material = "1.0.0-rc01"
 deps.versions = versions
 
 //endregion
@@ -17,7 +18,7 @@ deps.versions = versions
 //region AndroidX
 
 def androidx = [:]
-androidx.appcompat_v7 = "androidx.appcompat:appcompat:$versions.androidx"
+androidx.appcompat = "androidx.appcompat:appcompat:$versions.androidx"
 androidx.constraint = "androidx.constraintlayout:constraintlayout:$versions.constraint"
 deps.androidx = androidx
 
@@ -73,7 +74,7 @@ deps.room = room
 //region Ui
 
 def ui = [:]
-// TODO:
+ui.material = "com.google.android.material:material:$versions.material"
 deps.ui = ui
 
 //endregion
@@ -83,10 +84,10 @@ deps.ui = ui
 //region Repositories
 
 static def addRepos(RepositoryHandler handler) {
-    handler.google()
-    handler.jcenter()
-    handler.mavenCentral()
-    // TODO:
+  handler.google()
+  handler.jcenter()
+  handler.mavenCentral()
+  // TODO:
 }
 
 ext.addRepos = this.&addRepos
