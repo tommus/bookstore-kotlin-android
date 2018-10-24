@@ -6,11 +6,15 @@
   android:id="@+id/navigation_graph"
   app:startDestination="@id/login">
 
+  <!-- region Login Fragment -->
+
   <fragment
     android:id="@+id/login"
     android:name="co.windly.bookstore.presentation.login.LoginFragment"
     android:label="Login"
     tools:layout="@layout/fragment_login">
+
+    <!-- region Login -> Register Action -->
 
     <action
       android:id="@+id/actionLoginToRegister"
@@ -20,11 +24,20 @@
       app:popEnterAnim="@anim/v_fragment_pop_enter"
       app:popExitAnim="@anim/v_fragment_pop_exit"/>
 
+    <!-- endregion -->
+
   </fragment>
+
+  <!-- endregion -->
+
+  <!-- region Register Fragment -->
 
   <fragment
     android:id="@+id/register"
     android:name="co.windly.bookstore.presentation.register.RegisterFragment"
     android:label="Register"
     tools:layout="@layout/fragment_register"/>
+
+  <!-- endregion -->
+
 </navigation>
