@@ -14,7 +14,11 @@
 
     <action
       android:id="@+id/actionLoginToRegister"
-      app:destination="@id/register"/>
+      app:destination="@id/register"
+      app:enterAnim="@anim/v_fragment_enter"
+      app:exitAnim="@anim/v_fragment_exit"
+      app:popEnterAnim="@anim/v_fragment_pop_enter"
+      app:popExitAnim="@anim/v_fragment_pop_exit"/>
 
   </fragment>
 
