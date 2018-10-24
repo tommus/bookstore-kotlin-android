@@ -10,6 +10,7 @@ buildscript {
     dependencies {
         classpath deps.build.android_gradle_plugin
         classpath deps.build.kotlin_gradle_plugin
+        classpath deps.arch.navigation_safe_args_gradle_plugin
     }
 }
 

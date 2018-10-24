@@ -3,6 +3,7 @@
 apply plugin: "com.android.application"
 apply plugin: "kotlin-android"
 apply plugin: "kotlin-android-extensions"
+apply plugin: "androidx.navigation.safeargs"
 
 //endregion
 
@@ -27,7 +28,7 @@ android {
       minifyEnabled false
       shrinkResources false
       proguardFiles getDefaultProguardFile("proguard-android.txt"),
-        rootProject.file("settings/proguard/proguard-rules.pro")
+          rootProject.file("settings/proguard/proguard-rules.pro")
     }
     release {
       useProguard true
@@ -35,7 +36,7 @@ android {
       shrinkResources true
       signingConfig signingConfigs.release
       proguardFiles getDefaultProguardFile("proguard-android.txt"),
-        rootProject.file("settings/proguard/proguard-rules.pro")
+          rootProject.file("settings/proguard/proguard-rules.pro")
     }
   }
 
@@ -88,6 +89,13 @@ android {
 
 dependencies {
 
+  //region Android Architecture Components
+
+  implementation deps.arch.navigation_fragment
+  implementation deps.arch.navigation_ui
+
+  //endregion
+
   //region Application Files
 
   implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
@@ -103,6 +111,8 @@ dependencies {
   //region Kotlin
 
   implementation deps.kotlin.stdlib_jdk7
+
+  //endregion
 
   //region Ui
 
