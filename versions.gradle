@@ -60,6 +60,7 @@ deps.build_versions = build_versions
 //region Koin
 
 def koin = [:]
+koin.koin_android = "org.koin:koin-android:$versions.koin"
 koin.koin_core = "org.koin:koin-core:$versions.koin"
 deps.koin = koin
 

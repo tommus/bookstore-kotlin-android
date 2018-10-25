@@ -1,5 +1,6 @@
 package co.windly.bookstore.data.network
 
+import co.windly.bookstore.data.network.service.SwapiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module.module
@@ -9,48 +10,55 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.jackson.JacksonConverterFactory
 
-class NetworkModule {
+//region Module declaration
 
-    //region Module declaration
+val networkModule = module {
 
-    val networkModule = module {
+  //region OkHttpClient
 
-        //region OkHttpClient
+  single<OkHttpClient> {
+    OkHttpClient.Builder()
+        .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+        .build()
+  }
 
-        single<OkHttpClient> {
-            OkHttpClient.Builder()
-                .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                .build()
-        }
+  //endregion
 
-        //endregion
+  //region CallAdapter Factory
 
-        //region CallAdapter Factory
+  factory<CallAdapter.Factory> { RxJava2CallAdapterFactory.create() }
 
-        factory<CallAdapter.Factory> { RxJava2CallAdapterFactory.create() }
+  //endregion
 
-        //endregion
+  //region Converter Factory
 
-        //region Converter Factory
+  factory<Converter.Factory> { JacksonConverterFactory.create() }
 
-        factory<Converter.Factory> { JacksonConverterFactory.create() }
+  //endregion
 
-        //endregion
+  //region Retrofit
 
-        //region Retrofit
+  single<Retrofit> {
+    Retrofit.Builder()
+        .addCallAdapterFactory(get())
+        .addConverterFactory(get())
+        .baseUrl("https://swapi.co/")
+        .client(get())
+        .build()
+  }
 
-        single<Retrofit> {
-            Retrofit.Builder()
-                .addCallAdapterFactory(get())
-                .addConverterFactory(get())
-                .client(get())
-                .build()
-        }
+  //endregion
 
-        //endregion
-    }
+  //region Service
 
-    //endregion
+  single { provideSwapiService(get()) }
 
-
+  //endregion
 }
+
+private fun provideSwapiService(retrofit: Retrofit): SwapiService {
+  return retrofit.create(SwapiService::class.java)
+}
+
+//endregion
+

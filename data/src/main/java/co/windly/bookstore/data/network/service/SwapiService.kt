@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 interface SwapiService {
 
-    @GET("https://swapi.co/api/")
+    @GET("api/")
     fun getRoot(): Single<SwapiRootResponse>
 
 }

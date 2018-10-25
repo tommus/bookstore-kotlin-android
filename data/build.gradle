@@ -98,6 +98,7 @@ dependencies {
 
     //region Koin
 
+    api deps.koin.koin_android
     api deps.koin.koin_core
 
     //endregion
