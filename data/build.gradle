@@ -1,6 +1,7 @@
 //region Startup Plugins
 
 apply plugin: "com.android.library"
+apply plugin: 'kotlin-android'
 
 //endregion
 
@@ -95,9 +96,24 @@ dependencies {
 
     //endregion
 
+    //region Koin
+
+    api deps.koin.koin_core
+
+    //endregion
+
+    //region Kotlin
+
+    api deps.kotlin.stdlib_jdk7
+
+    //endregion
+
     //region Networking
 
-    // TODO:
+    implementation deps.retrofit.jackson
+    implementation deps.retrofit.logging
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.rxjava2
 
     //endregion
 

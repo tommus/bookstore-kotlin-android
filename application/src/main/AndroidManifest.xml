@@ -7,7 +7,7 @@
 
   <!-- region Permissions -->
 
-  <!-- TODO: -->
+  <uses-permission android:name="android.permission.INTERNET" />
 
   <!-- endregion -->
 

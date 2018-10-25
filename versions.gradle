@@ -10,8 +10,15 @@ versions.android_gradle_plugin = "3.2.1"
 versions.androidx = "1.0.0"
 versions.arch_navigation = "1.0.0-alpha06"
 versions.constraint = "1.1.2"
+versions.koin = "1.0.1"
 versions.kotlin = "1.2.71"
 versions.material = "1.0.0-rc01"
+versions.okhttp = "2.7.5"
+versions.okhttp_logging_interceptor = "3.11.0"
+versions.retrofit = "2.4.0"
+versions.rx_android = "2.1.0"
+versions.rx_bindings = "2.2.0"
+versions.rx_java = "2.2.2"
 deps.versions = versions
 
 //endregion
@@ -50,6 +57,14 @@ deps.build_versions = build_versions
 
 //endregion
 
+//region Koin
+
+def koin = [:]
+koin.koin_core = "org.koin:koin-core:$versions.koin"
+deps.koin = koin
+
+//endregion
+
 //region Kotlin
 
 def kotlin = [:]
@@ -69,7 +84,10 @@ deps.misc = misc
 //region Retrofit
 
 def retrofit = [:]
-// TODO:
+retrofit.jackson = "com.squareup.retrofit2:converter-jackson:$versions.retrofit"
+retrofit.logging = "com.squareup.okhttp3:logging-interceptor:$versions.okhttp_logging_interceptor"
+retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.rxjava2 = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
 deps.retrofit = retrofit
 
 //endregion
