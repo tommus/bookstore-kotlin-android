@@ -15,6 +15,19 @@
   <string name="login_field_password">Password</string>
   <string name="login_forgot_password">Forgot password?</string>
   <string name="login_sign_in">Sign in</string>
+  <string name="login_sign_up">Sign up</string>
+
+  <!-- endregion -->
+
+  <!-- region Register -->
+
+  <string name="register_email">Email</string>
+  <string name="register_username">Username</string>
+  <string name="register_password">Password</string>
+  <string name="register_re_password">Repeat password</string>
+  <string name="register_first_name">First name</string>
+  <string name="register_last_name">Last name</string>
+  <string name="register_proceed">Proceed</string>
 
   <!-- endregion -->
 
