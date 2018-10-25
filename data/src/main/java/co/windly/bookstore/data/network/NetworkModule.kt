@@ -56,6 +56,10 @@ val networkModule = module {
   //endregion
 }
 
+//endregion
+
+//region Services
+
 private fun provideSwapiService(retrofit: Retrofit): SwapiService {
   return retrofit.create(SwapiService::class.java)
 }
