@@ -1,0 +1,22 @@
+#region Debugging
+EnableBugTracker=false
+EnableDebugBridge=false
+EnableLeakCanary=false
+EnableLogger=false
+#endregion
+
+#region Server - Common
+ServerConnectionTimeout=15
+ServerReadTimeout=20
+ServerWriteTimeout=20
+#endregion
+
+#region Server - Development
+DevServerLoggingLevel="body"
+DevServerUrl="https://lab2.itcraft.pl/18000/api/"
+#endregion
+
+#region Server - Production
+ProdServerLoggingLevel="none"
+ProdServerUrl="https://lab2.itcraft.pl/18000/api/"
+#endregion

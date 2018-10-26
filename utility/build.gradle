@@ -1,0 +1,98 @@
+//region Startup Plugins
+
+apply plugin: "com.android.library"
+
+//endregion
+
+//region Android
+
+android {
+
+    //region Compile
+
+    compileSdkVersion deps.build_versions.compile_sdk
+
+    //endregion
+
+    //region Default Config
+
+    defaultConfig {
+        minSdkVersion deps.build_versions.min_sdk
+        targetSdkVersion deps.build_versions.target_sdk
+        versionCode getAutoVersionCode()
+        versionName getAutoVersionName()
+        dimension "todo"
+    }
+
+    //endregion
+
+    //region Flavor Dimensions
+
+    flavorDimensions "todo"
+
+    //endregion
+
+    //region Build Types
+
+    buildTypes {
+        debug {
+            useProguard false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android.txt"),
+                    rootProject.file("settings/proguard/proguard-rules.pro")
+        }
+        release {
+            useProguard true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile("proguard-android.txt"),
+                    rootProject.file("settings/proguard/proguard-rules.pro")
+        }
+    }
+
+    //endregion
+
+    //region Gradle Properties
+
+    buildTypes.each {
+        it.buildConfigField "Boolean", "ENABLE_BUG_TRACKER", EnableBugTracker
+        it.buildConfigField "Boolean", "ENABLE_DEBUG_BRIDGE", EnableDebugBridge
+        it.buildConfigField "Boolean", "ENABLE_LEAK_CANARY", EnableLeakCanary
+        it.buildConfigField "Integer", "SERVER_CONNECTION_TIMEOUT", ServerConnectionTimeout
+        it.buildConfigField "Integer", "SERVER_READ_TIMEOUT", ServerReadTimeout
+        it.buildConfigField "Integer", "SERVER_WRITE_TIMEOUT", ServerWriteTimeout
+    }
+
+    //endregion
+
+    //region Product Flavors
+
+    productFlavors {
+        dev {
+            it.buildConfigField "String", "SERVER_LOGGING_LEVEL", DevServerLoggingLevel
+            buildConfigField "String", "SERVER_URL", DevServerUrl
+        }
+        prod {
+            it.buildConfigField "String", "SERVER_LOGGING_LEVEL", ProdServerLoggingLevel
+            buildConfigField "String", "SERVER_URL", ProdServerUrl
+        }
+    }
+
+    //endregion
+}
+
+//endregion
+
+//region Dependencies
+
+dependencies {
+
+    //region Application Files
+
+    implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
+
+    //endregion
+
+    // TODO:
+}
+
+//endregion

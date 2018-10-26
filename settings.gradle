@@ -1,2 +1,5 @@
+include ":utility"
+include ":network"
+include ":persistence"
+include ":domain"
 include ":application"
-include ":data"

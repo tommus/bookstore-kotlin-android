@@ -80,7 +80,9 @@ dependencies {
 
     //region Application Modules
 
-    // TODO:
+    api project(":utility")
+    implementation project(":network")
+    implementation project(":persistence")
 
     //endregion
 
