@@ -1,6 +1,7 @@
 //region Startup Plugins
 
 apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
 
 //endregion
 
@@ -8,78 +9,87 @@ apply plugin: "com.android.library"
 
 android {
 
-    //region Compile
+  //region Compile
 
-    compileSdkVersion deps.build_versions.compile_sdk
+  compileSdkVersion deps.build_versions.compile_sdk
 
-    //endregion
+  //endregion
 
-    //region Default Config
+  //region Default Config
 
-    defaultConfig {
-        minSdkVersion deps.build_versions.min_sdk
-        targetSdkVersion deps.build_versions.target_sdk
-        versionCode getAutoVersionCode()
-        versionName getAutoVersionName()
-        dimension "todo"
+  defaultConfig {
+    minSdkVersion deps.build_versions.min_sdk
+    targetSdkVersion deps.build_versions.target_sdk
+    versionCode getAutoVersionCode()
+    versionName getAutoVersionName()
+    dimension "todo"
+  }
+
+  //endregion
+
+  //region Flavor Dimensions
+
+  flavorDimensions "todo"
+
+  //endregion
+
+  //region Build Types
+
+  buildTypes {
+    debug {
+      useProguard false
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile("proguard-android.txt"),
+        rootProject.file("settings/proguard/proguard-rules.pro")
     }
-
-    //endregion
-
-    //region Flavor Dimensions
-
-    flavorDimensions "todo"
-
-    //endregion
-
-    //region Build Types
-
-    buildTypes {
-        debug {
-            useProguard false
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile("proguard-android.txt"),
-                    rootProject.file("settings/proguard/proguard-rules.pro")
-        }
-        release {
-            useProguard true
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile("proguard-android.txt"),
-                    rootProject.file("settings/proguard/proguard-rules.pro")
-        }
+    release {
+      useProguard true
+      minifyEnabled true
+      proguardFiles getDefaultProguardFile("proguard-android.txt"),
+        rootProject.file("settings/proguard/proguard-rules.pro")
     }
+  }
 
-    //endregion
+  //endregion
 
-    //region Product Flavors
+  //region Product Flavors
 
-    productFlavors {
-        dev {
-            // Do not dare to remove empty flavors.
-        }
-        prod {
-            // Do not dare to remove empty flavors.
-        }
+  productFlavors {
+    dev {
+      // Do not dare to remove empty flavors.
     }
+    prod {
+      // Do not dare to remove empty flavors.
+    }
+  }
 
-    //endregion
+  //endregion
 }
 
 //region Dependencies
 
 dependencies {
 
-    //region Application Files
+  //region Application Files
 
-    implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
+  implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
 
-    //endregion
+  //endregion
 
-    //region Application Modules
+  //region Application Modules
 
-    implementation project(":utility")
+  implementation project(":utility")
 
-    //endregion
+  //endregion
+
+  //region Networking
+
+  implementation deps.retrofit.jackson
+  implementation deps.retrofit.logging
+  implementation deps.retrofit.runtime
+  implementation deps.retrofit.rxjava2
+
+  //endregion
 }
 
 //endregion

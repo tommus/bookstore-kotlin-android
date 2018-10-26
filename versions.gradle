@@ -13,12 +13,15 @@ versions.constraint = "1.1.2"
 versions.koin = "1.0.1"
 versions.kotlin = "1.2.71"
 versions.material = "1.0.0-rc01"
+versions.model_mapper = "2.3.0"
 versions.okhttp = "2.7.5"
 versions.okhttp_logging_interceptor = "3.11.0"
 versions.retrofit = "2.4.0"
+versions.room = "1.1.1"
 versions.rx_android = "2.1.0"
-versions.rx_bindings = "2.2.0"
-versions.rx_java = "2.2.2"
+versions.rx_java = "2.2.3"
+versions.rx_kotlin = "2.3.0"
+versions.stetho = "1.5.0"
 deps.versions = versions
 
 //endregion
@@ -27,7 +30,8 @@ deps.versions = versions
 
 def arch = [:]
 arch.navigation_fragment = "android.arch.navigation:navigation-fragment-ktx:$versions.arch_navigation"
-arch.navigation_safe_args_gradle_plugin = "android.arch.navigation:navigation-safe-args-gradle-plugin:$versions.arch_navigation"
+arch.navigation_safe_args_gradle_plugin =
+  "android.arch.navigation:navigation-safe-args-gradle-plugin:$versions.arch_navigation"
 arch.navigation_ui = "android.arch.navigation:navigation-ui-ktx:$versions.arch_navigation"
 deps.arch = arch
 
@@ -57,6 +61,14 @@ deps.build_versions = build_versions
 
 //endregion
 
+//region Facebook
+
+def facebook = [:]
+facebook.stetho = "com.facebook.stetho:stetho-okhttp3:$versions.stetho"
+deps.facebook = facebook
+
+//endregion
+
 //region Koin
 
 def koin = [:]
@@ -77,8 +89,18 @@ deps.kotlin = kotlin
 //region Miscellaneous
 
 def misc = [:]
-// TODO:
+deps.model_mapper = "org.modelmapper:modelmapper:$versions.model_mapper"
 deps.misc = misc
+
+//endregion
+
+//region Reactive extensions
+
+def rx = [:]
+rx.android = "io.reactivex.rxjava2:rxandroid:$versions.rx_android"
+rx.java = "io.reactivex.rxjava2:rxjava:$versions.rx_java"
+rx.kotlin = "io.reactivex.rxjava2:rxkotlin:$versions.rx_kotlin"
+deps.rx = rx
 
 //endregion
 
@@ -96,7 +118,9 @@ deps.retrofit = retrofit
 //region Room
 
 def room = [:]
-// TODO:
+room.compiler = "android.arch.persistence.room:compiler:$versions.room"
+room.runtime = "android.arch.persistence.room:runtime:$versions.room"
+room.rxjava2 = "android.arch.persistence.room:rxjava2:$versions.room"
 deps.room = room
 
 //endregion

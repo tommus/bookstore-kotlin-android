@@ -1,7 +1,9 @@
 package co.windly.bookstore.application
 
 import android.app.Application
-import co.windly.bookstore.data.network.networkModule
+import co.windly.bookstore.domain.DomainModule
+import co.windly.bookstore.utility.BuildConfig
+import co.windly.bookstore.utility.debug.DebugBridge
 import org.koin.android.ext.android.startKoin
 
 class BookstoreApplication : Application() {
@@ -11,17 +13,29 @@ class BookstoreApplication : Application() {
   override fun onCreate() {
     super.onCreate()
 
-    initializeKoin()
+    // Initialize dependency graph.
+    initializeDependencyInjection()
+
+    // Initialize tools.
+    initializeDebugBridge()
   }
 
   //endregion
 
-  //region Koin
+  //region Debug Bridge
 
-  private fun initializeKoin() {
-    startKoin(this, listOf(networkModule))
+  private fun initializeDebugBridge() {
+    DebugBridge
+      .init(BuildConfig.ENABLE_DEBUG_BRIDGE, this)
   }
 
   //endregion
 
+  //region Dependency Injection
+
+  private fun initializeDependencyInjection() {
+    startKoin(this, listOf(DomainModule().domainModule))
+  }
+
+  //endregion
 }

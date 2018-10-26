@@ -1,6 +1,7 @@
 //region Startup Plugins
 
 apply plugin: "com.android.library"
+apply plugin: 'kotlin-android'
 
 //endregion
 
@@ -8,76 +9,76 @@ apply plugin: "com.android.library"
 
 android {
 
-    //region Compile
+  //region Compile
 
-    compileSdkVersion deps.build_versions.compile_sdk
+  compileSdkVersion deps.build_versions.compile_sdk
 
-    //endregion
+  //endregion
 
-    //region Default Config
+  //region Default Config
 
-    defaultConfig {
-        minSdkVersion deps.build_versions.min_sdk
-        targetSdkVersion deps.build_versions.target_sdk
-        versionCode getAutoVersionCode()
-        versionName getAutoVersionName()
-        dimension "todo"
+  defaultConfig {
+    minSdkVersion deps.build_versions.min_sdk
+    targetSdkVersion deps.build_versions.target_sdk
+    versionCode getAutoVersionCode()
+    versionName getAutoVersionName()
+    dimension "todo"
+  }
+
+  //endregion
+
+  //region Flavor Dimensions
+
+  flavorDimensions "todo"
+
+  //endregion
+
+  //region Build Types
+
+  buildTypes {
+    debug {
+      useProguard false
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile("proguard-android.txt"),
+        rootProject.file("settings/proguard/proguard-rules.pro")
     }
-
-    //endregion
-
-    //region Flavor Dimensions
-
-    flavorDimensions "todo"
-
-    //endregion
-
-    //region Build Types
-
-    buildTypes {
-        debug {
-            useProguard false
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile("proguard-android.txt"),
-                    rootProject.file("settings/proguard/proguard-rules.pro")
-        }
-        release {
-            useProguard true
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile("proguard-android.txt"),
-                    rootProject.file("settings/proguard/proguard-rules.pro")
-        }
+    release {
+      useProguard true
+      minifyEnabled true
+      proguardFiles getDefaultProguardFile("proguard-android.txt"),
+        rootProject.file("settings/proguard/proguard-rules.pro")
     }
+  }
 
-    //endregion
+  //endregion
 
-    //region Gradle Properties
+  //region Gradle Properties
 
-    buildTypes.each {
-        it.buildConfigField "Boolean", "ENABLE_BUG_TRACKER", EnableBugTracker
-        it.buildConfigField "Boolean", "ENABLE_DEBUG_BRIDGE", EnableDebugBridge
-        it.buildConfigField "Boolean", "ENABLE_LEAK_CANARY", EnableLeakCanary
-        it.buildConfigField "Integer", "SERVER_CONNECTION_TIMEOUT", ServerConnectionTimeout
-        it.buildConfigField "Integer", "SERVER_READ_TIMEOUT", ServerReadTimeout
-        it.buildConfigField "Integer", "SERVER_WRITE_TIMEOUT", ServerWriteTimeout
+  buildTypes.each {
+    it.buildConfigField "Boolean", "ENABLE_BUG_TRACKER", EnableBugTracker
+    it.buildConfigField "Boolean", "ENABLE_DEBUG_BRIDGE", EnableDebugBridge
+    it.buildConfigField "Boolean", "ENABLE_LEAK_CANARY", EnableLeakCanary
+    it.buildConfigField "Long", "SERVER_CONNECTION_TIMEOUT", ServerConnectionTimeout
+    it.buildConfigField "Long", "SERVER_READ_TIMEOUT", ServerReadTimeout
+    it.buildConfigField "Long", "SERVER_WRITE_TIMEOUT", ServerWriteTimeout
+  }
+
+  //endregion
+
+  //region Product Flavors
+
+  productFlavors {
+    dev {
+      it.buildConfigField "String", "SERVER_LOGGING_LEVEL", DevServerLoggingLevel
+      buildConfigField "String", "SERVER_URL", DevServerUrl
     }
-
-    //endregion
-
-    //region Product Flavors
-
-    productFlavors {
-        dev {
-            it.buildConfigField "String", "SERVER_LOGGING_LEVEL", DevServerLoggingLevel
-            buildConfigField "String", "SERVER_URL", DevServerUrl
-        }
-        prod {
-            it.buildConfigField "String", "SERVER_LOGGING_LEVEL", ProdServerLoggingLevel
-            buildConfigField "String", "SERVER_URL", ProdServerUrl
-        }
+    prod {
+      it.buildConfigField "String", "SERVER_LOGGING_LEVEL", ProdServerLoggingLevel
+      buildConfigField "String", "SERVER_URL", ProdServerUrl
     }
+  }
 
-    //endregion
+  //endregion
 }
 
 //endregion
@@ -86,13 +87,38 @@ android {
 
 dependencies {
 
-    //region Application Files
+  //region Application Files
 
-    implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
+  implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
 
-    //endregion
+  //endregion
 
-    // TODO:
+  //region Debugging
+
+  implementation deps.facebook.stetho
+
+  //endregion
+
+  //region Koin
+
+  api deps.koin.koin_android
+  api deps.koin.koin_core
+
+  //endregion
+
+  //region Kotlin
+
+  api deps.kotlin.stdlib_jdk7
+
+  //endregion
+
+  //region Reactive extensions
+
+  api deps.rx.android
+  api deps.rx.java
+  api deps.rx.kotlin
+
+  //endregion
 }
 
 //endregion
