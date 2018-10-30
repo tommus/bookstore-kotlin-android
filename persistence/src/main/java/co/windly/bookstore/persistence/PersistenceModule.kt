@@ -2,6 +2,7 @@ package co.windly.bookstore.persistence
 
 import androidx.room.Room
 import co.windly.bookstore.persistence.database.AndroidDatabase
+import co.windly.bookstore.persistence.manager.AccountPersistenceManager
 import co.windly.bookstore.persistence.manager.AuthorPersistenceManager
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module.module
@@ -9,6 +10,8 @@ import org.koin.dsl.module.module
 val persistenceModule = module {
 
   //region Managers
+
+  single { AccountPersistenceManager() }
 
   single { AuthorPersistenceManager(get()) }
 

@@ -8,9 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import co.windly.bookstore.R
-import co.windly.bookstore.domain.manager.AuthorDomainManager
+import co.windly.bookstore.domain.manager.AccountDomainManager
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
+import kotlinx.android.synthetic.main.fragment_login.loginField
+import kotlinx.android.synthetic.main.fragment_login.passwordField
+import kotlinx.android.synthetic.main.fragment_login.signInButton
 import kotlinx.android.synthetic.main.fragment_login.signUpButton
 import org.koin.android.ext.android.inject
 
@@ -18,7 +21,7 @@ class LoginFragment : Fragment() {
 
   //region Managers
 
-  private val authorManager: AuthorDomainManager by inject()
+  private val accountManager: AccountDomainManager by inject()
 
   private val disposables = CompositeDisposable()
 
@@ -31,17 +34,29 @@ class LoginFragment : Fragment() {
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+    // Configure sign in button.
+    signInButton.setOnClickListener {
+
+      // Retrieve credentials.
+      val username = loginField.text.toString()
+      val password = passwordField.text.toString()
+
+      // TODO: Validation.
+
+      disposables += accountManager
+        .loginAccount(username = username, password = password)
+        .subscribe(
+          { this.handleLoginAccountSuccess() },
+          { this.handleLoginAccountError(it) }
+        )
+    }
+
+    // Configure sign up button.
     signUpButton.setOnClickListener {
       val action = LoginFragmentDirections.actionLoginToRegister()
       it.findNavController().navigate(action)
     }
-
-    disposables += authorManager
-      .downloadAuthorList()
-      .subscribe(
-        { this.handleDownloadAuthorListSuccess() },
-        { this.handleDownloadAuthorListError(it) }
-      )
   }
 
   override fun onDestroy() {
@@ -51,16 +66,21 @@ class LoginFragment : Fragment() {
 
   //endregion
 
-  //region Download Authors
+  //region Login Account
 
-  private fun handleDownloadAuthorListSuccess() {
+  private fun handleLoginAccountSuccess() {
+
+    // Log the fact.
+    Log.v(this::class.simpleName, "Successfully signed in.")
     // TODO:
-    Log.d("Foo", "Success")
   }
 
-  private fun handleDownloadAuthorListError(throwable: Throwable) {
+  private fun handleLoginAccountError(throwable: Throwable) {
+
+    // Log an error.
+    Log.e(this::class.simpleName, "An error occurred while trying to sign in an account.")
+    Log.e(this::class.simpleName, throwable.localizedMessage)
     // TODO:
-    Log.e("Foo", throwable.localizedMessage)
   }
 
   //endregion
