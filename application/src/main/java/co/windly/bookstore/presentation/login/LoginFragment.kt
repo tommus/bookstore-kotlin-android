@@ -11,6 +11,7 @@ import co.windly.bookstore.domain.manager.AccountDomainManager
 import co.windly.bookstore.utility.log.ItLogger
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
+import kotlinx.android.synthetic.main.fragment_login.forgotPasswordButton
 import kotlinx.android.synthetic.main.fragment_login.loginField
 import kotlinx.android.synthetic.main.fragment_login.passwordField
 import kotlinx.android.synthetic.main.fragment_login.signInButton
@@ -34,6 +35,12 @@ class LoginFragment : Fragment() {
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+    // Configure forgot password button.
+    forgotPasswordButton.setOnClickListener {
+      val action = LoginFragmentDirections.actionLoginToForgotPassword()
+      it.findNavController().navigate(action)
+    }
 
     // Configure sign in button.
     signInButton.setOnClickListener {

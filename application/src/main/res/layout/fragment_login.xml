@@ -1,74 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.constraintlayout.widget.ConstraintLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  tools:background="@drawable/splash_background"
-  tools:context=".MainActivity">
-
-  <!-- region Title -->
-
-  <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/login_title"
-    android:textColor="@color/white"
-    android:textSize="@dimen/font_18"
-    app:layout_constraintBottom_toTopOf="@+id/loginCard"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"/>
-
-  <!-- endregion -->
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@drawable/splash_background"
+    tools:context=".MainActivity">
 
   <!-- region Login Card -->
 
   <com.google.android.material.card.MaterialCardView
-    android:id="@+id/loginCard"
-    android:layout_width="@dimen/size_auto"
-    android:layout_height="@dimen/size_auto"
-    app:cardCornerRadius="@dimen/size_p4"
-    app:cardElevation="@dimen/elevation_4"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHeight_percent="0.60"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintWidth_percent="0.8">
+      android:id="@+id/loginCard"
+      android:layout_width="@dimen/size_auto"
+      android:layout_height="@dimen/size_auto"
+      app:cardCornerRadius="@dimen/size_p4"
+      app:cardElevation="@dimen/elevation_4"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHeight_percent="0.60"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintWidth_percent="0.8">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:clipToPadding="false"
-      android:padding="@dimen/size_p24">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="@dimen/size_p24">
 
       <!-- region Login Field -->
 
       <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/loginContainer"
-        android:layout_width="@dimen/size_auto"
-        android:layout_height="wrap_content"
-        android:hint="@string/login_field_login"
-        app:boxStrokeWidth="@dimen/size_p1"
-        app:layout_constraintBottom_toTopOf="@+id/passwordContainer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintVertical_chainStyle="packed"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+          android:id="@+id/loginContainer"
+          android:layout_width="@dimen/size_auto"
+          android:layout_height="wrap_content"
+          android:hint="@string/login_field_login"
+          app:boxStrokeWidth="@dimen/size_p1"
+          app:layout_constraintBottom_toTopOf="@+id/passwordContainer"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintVertical_bias="0"
+          app:layout_constraintVertical_chainStyle="packed"
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-          android:id="@+id/loginField"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:imeOptions="actionNext"
-          android:inputType="text"
-          android:lines="1"
-          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+            android:id="@+id/loginField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:lines="1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
 
       </com.google.android.material.textfield.TextInputLayout>
 
@@ -77,24 +62,24 @@
       <!-- region Password Field -->
 
       <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordContainer"
-        android:layout_width="@dimen/size_auto"
-        android:layout_height="wrap_content"
-        android:hint="@string/login_field_password"
-        app:boxStrokeWidth="@dimen/size_p1"
-        app:layout_constraintBottom_toTopOf="@+id/forgotPasswordButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginContainer"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+          android:id="@+id/passwordContainer"
+          android:layout_width="@dimen/size_auto"
+          android:layout_height="wrap_content"
+          android:hint="@string/login_field_password"
+          app:boxStrokeWidth="@dimen/size_p1"
+          app:layout_constraintBottom_toTopOf="@+id/forgotPasswordButton"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/loginContainer"
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-          android:id="@+id/passwordField"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:imeOptions="actionDone"
-          android:inputType="textPassword"
-          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+            android:id="@+id/passwordField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
 
       </com.google.android.material.textfield.TextInputLayout>
 
@@ -103,57 +88,57 @@
       <!-- region Forgot Password Button -->
 
       <com.google.android.material.button.MaterialButton
-        android:id="@+id/forgotPasswordButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login_forgot_password"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="@dimen/font_12"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordContainer"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+          android:id="@+id/forgotPasswordButton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/login_forgot_password"
+          android:textAllCaps="false"
+          android:textColor="@color/black"
+          android:textSize="@dimen/font_12"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="1"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/passwordContainer"
+          style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
       <!-- endregion -->
 
       <!-- region Sign In Button -->
 
       <com.google.android.material.button.MaterialButton
-        android:id="@+id/signInButton"
-        android:layout_width="@dimen/size_auto"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimary"
-        android:backgroundTintMode="src_in"
-        android:text="@string/login_sign_in"
-        android:textSize="@dimen/font_14"
-        app:layout_constraintBottom_toTopOf="@+id/signUpButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordButton"
-        app:layout_constraintVertical_bias="1"
-        style="@style/Widget.MaterialComponents.Button"/>
+          android:id="@+id/signInButton"
+          android:layout_width="@dimen/size_auto"
+          android:layout_height="wrap_content"
+          android:backgroundTint="@color/colorPrimary"
+          android:backgroundTintMode="src_in"
+          android:text="@string/login_sign_in"
+          android:textSize="@dimen/font_14"
+          app:layout_constraintBottom_toTopOf="@+id/signUpButton"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/forgotPasswordButton"
+          app:layout_constraintVertical_bias="1"
+          style="@style/Widget.MaterialComponents.Button"/>
 
       <!-- endregion -->
 
       <!-- region Sign Up Button -->
 
       <com.google.android.material.button.MaterialButton
-        android:id="@+id/signUpButton"
-        android:layout_width="@dimen/size_auto"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimary"
-        android:backgroundTintMode="src_in"
-        android:text="@string/login_sign_up"
-        android:textSize="@dimen/font_14"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordButton"
-        app:layout_constraintVertical_bias="1"
-        style="@style/Widget.MaterialComponents.Button"/>
+          android:id="@+id/signUpButton"
+          android:layout_width="@dimen/size_auto"
+          android:layout_height="wrap_content"
+          android:backgroundTint="@color/colorPrimary"
+          android:backgroundTintMode="src_in"
+          android:text="@string/login_sign_up"
+          android:textSize="@dimen/font_14"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/forgotPasswordButton"
+          app:layout_constraintVertical_bias="1"
+          style="@style/Widget.MaterialComponents.Button"/>
 
       <!-- endregion -->
 

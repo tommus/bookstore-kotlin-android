@@ -10,7 +10,6 @@
 
   <!-- region Login -->
 
-  <string name="login_title">My Account</string>
   <string name="login_field_login">Login</string>
   <string name="login_field_password">Password</string>
   <string name="login_forgot_password">Forgot password?</string>
@@ -28,6 +27,13 @@
   <string name="register_first_name">First name</string>
   <string name="register_last_name">Last name</string>
   <string name="register_proceed">Proceed</string>
+
+  <!-- endregion -->
+
+  <!-- region Forgot Password -->
+
+  <string name="forgot_password_email">Email</string>
+  <string name="forgot_password_reset">Reset password</string>
 
   <!-- endregion -->
 
