@@ -58,6 +58,7 @@ android {
     it.buildConfigField "Boolean", "ENABLE_BUG_TRACKER", EnableBugTracker
     it.buildConfigField "Boolean", "ENABLE_DEBUG_BRIDGE", EnableDebugBridge
     it.buildConfigField "Boolean", "ENABLE_LEAK_CANARY", EnableLeakCanary
+    it.buildConfigField "Boolean", "ENABLE_LOGGER", EnableLogger
     it.buildConfigField "Long", "SERVER_CONNECTION_TIMEOUT", ServerConnectionTimeout
     it.buildConfigField "Long", "SERVER_READ_TIMEOUT", ServerReadTimeout
     it.buildConfigField "Long", "SERVER_WRITE_TIMEOUT", ServerWriteTimeout
@@ -96,6 +97,7 @@ dependencies {
   //region Debugging
 
   implementation deps.facebook.stetho
+  implementation deps.timber
 
   //endregion
 

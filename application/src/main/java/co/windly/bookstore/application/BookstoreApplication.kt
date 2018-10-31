@@ -4,6 +4,8 @@ import android.app.Application
 import co.windly.bookstore.domain.DomainModule
 import co.windly.bookstore.utility.BuildConfig
 import co.windly.bookstore.utility.debug.DebugBridge
+import co.windly.bookstore.utility.log.ItLogger
+import com.squareup.leakcanary.LeakCanary
 import org.koin.android.ext.android.startKoin
 
 class BookstoreApplication : Application() {
@@ -18,6 +20,8 @@ class BookstoreApplication : Application() {
 
     // Initialize tools.
     initializeDebugBridge()
+    initializeLeakCanary()
+    initializeLogger()
   }
 
   //endregion
@@ -35,6 +39,31 @@ class BookstoreApplication : Application() {
 
   private fun initializeDependencyInjection() {
     startKoin(this, listOf(DomainModule().domainModule))
+  }
+
+  //endregion
+
+  //region Leak Canary
+
+  private fun initializeLeakCanary() {
+
+    if (LeakCanary.isInAnalyzerProcess(this) && !BuildConfig.ENABLE_LEAK_CANARY) {
+      // This process is dedicated to Leak Canary for heap analysis.
+      // Do not initialize application in this process.
+      ItLogger.v("Leak Canary will not be initialized in during the analyzer process.")
+    }
+
+    LeakCanary
+      .install(this)
+  }
+
+  //endregion
+
+  //region Logger
+
+  private fun initializeLogger() {
+    ItLogger
+      .init(BuildConfig.ENABLE_LOGGER)
   }
 
   //endregion

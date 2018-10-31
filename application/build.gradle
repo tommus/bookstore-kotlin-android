@@ -28,7 +28,7 @@ android {
       minifyEnabled false
       shrinkResources false
       proguardFiles getDefaultProguardFile("proguard-android.txt"),
-        rootProject.file("settings/proguard/proguard-rules.pro")
+          rootProject.file("settings/proguard/proguard-rules.pro")
     }
     release {
       useProguard true
@@ -36,7 +36,7 @@ android {
       shrinkResources true
       signingConfig signingConfigs.release
       proguardFiles getDefaultProguardFile("proguard-android.txt"),
-        rootProject.file("settings/proguard/proguard-rules.pro")
+          rootProject.file("settings/proguard/proguard-rules.pro")
     }
   }
 
@@ -71,11 +71,13 @@ android {
       applicationIdSuffix ".dev"
       versionCode = getAutoVersionCode()
       versionName = getAutoVersionName() + " (dev)"
+      resValue "string", "leak_canary_display_activity_label", getProjectName() + " Development Leaks"
       dimension "todo"
     }
     prod {
       versionCode = getAutoVersionCode()
       versionName = getAutoVersionName()
+      resValue "string", "leak_canary_display_activity_label", getProjectName() + "  Leaks"
       dimension "todo"
     }
   }
@@ -105,6 +107,14 @@ dependencies {
 
   implementation deps.arch.navigation_fragment
   implementation deps.arch.navigation_ui
+
+  //endregion
+
+  //region Leak Canary
+
+  debugImplementation deps.leak_canary.debug
+  debugImplementation deps.leak_canary.debug_fragment
+  releaseImplementation deps.leak_canary.release
 
   //endregion
 

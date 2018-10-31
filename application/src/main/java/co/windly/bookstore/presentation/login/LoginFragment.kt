@@ -1,7 +1,6 @@
 package co.windly.bookstore.presentation.login
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import co.windly.bookstore.R
 import co.windly.bookstore.domain.manager.AccountDomainManager
+import co.windly.bookstore.utility.log.ItLogger
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
 import kotlinx.android.synthetic.main.fragment_login.loginField
@@ -71,16 +71,14 @@ class LoginFragment : Fragment() {
   private fun handleLoginAccountSuccess() {
 
     // Log the fact.
-    Log.v(this::class.simpleName, "Successfully signed in.")
-    // TODO:
+    ItLogger.v("Successfully signed in.")
   }
 
   private fun handleLoginAccountError(throwable: Throwable) {
 
     // Log an error.
-    Log.e(this::class.simpleName, "An error occurred while trying to sign in an account.")
-    Log.e(this::class.simpleName, throwable.localizedMessage)
-    // TODO:
+    ItLogger.e("An error occurred while trying to sign in an account.")
+    ItLogger.e(throwable.localizedMessage)
   }
 
   //endregion
