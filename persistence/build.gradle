@@ -41,13 +41,13 @@ android {
       useProguard false
       minifyEnabled false
       proguardFiles getDefaultProguardFile("proguard-android.txt"),
-        rootProject.file("settings/proguard/proguard-rules.pro")
+          rootProject.file("settings/proguard/proguard-rules.pro")
     }
     release {
       useProguard true
       minifyEnabled true
       proguardFiles getDefaultProguardFile("proguard-android.txt"),
-        rootProject.file("settings/proguard/proguard-rules.pro")
+          rootProject.file("settings/proguard/proguard-rules.pro")
     }
   }
 
@@ -90,6 +90,13 @@ dependencies {
   api deps.room.runtime
   api deps.room.rxjava2
   kapt deps.room.compiler
+
+  //endregion
+
+  //region Shared Preferences
+
+  api deps.androidx_preferences
+  kapt deps.androidx_preferences_compiler
 
   //endregion
 }

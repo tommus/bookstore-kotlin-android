@@ -4,6 +4,7 @@ import androidx.room.Room
 import co.windly.bookstore.persistence.database.AndroidDatabase
 import co.windly.bookstore.persistence.manager.AccountPersistenceManager
 import co.windly.bookstore.persistence.manager.AuthorPersistenceManager
+import co.windly.bookstore.persistence.preferences.UserCachePrefs
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module.module
 
@@ -11,13 +12,19 @@ val persistenceModule = module {
 
   //region Managers
 
-  single { AccountPersistenceManager() }
+  single { AccountPersistenceManager(get()) }
 
   single { AuthorPersistenceManager(get()) }
 
   //endregion
 
-  //region Daos
+  //region Shared Preferences
+
+  single { UserCachePrefs.get(androidContext()) }
+
+  //endregion
+
+  //region Data Access Objects
 
   single { get<AndroidDatabase>().authorDao() }
 

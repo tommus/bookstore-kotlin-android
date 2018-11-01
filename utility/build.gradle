@@ -40,13 +40,13 @@ android {
       useProguard false
       minifyEnabled false
       proguardFiles getDefaultProguardFile("proguard-android.txt"),
-        rootProject.file("settings/proguard/proguard-rules.pro")
+          rootProject.file("settings/proguard/proguard-rules.pro")
     }
     release {
       useProguard true
       minifyEnabled true
       proguardFiles getDefaultProguardFile("proguard-android.txt"),
-        rootProject.file("settings/proguard/proguard-rules.pro")
+          rootProject.file("settings/proguard/proguard-rules.pro")
     }
   }
 
