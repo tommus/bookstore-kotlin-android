@@ -7,7 +7,7 @@ This is a sandbox project for testing various elements of modern Android technol
 The main goal is to test:
 
 * Kotlin features,
-* most recent Jitpack Components,
+* most recent Jetpack Components,
 * verify Kotlin-relevant architecture patterns.
 
 Kotlin and Android development features that requires verification:
