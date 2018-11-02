@@ -114,6 +114,13 @@ dependencies {
 
   //endregion
 
+  //region Miscellaneous
+
+  api deps.joda_money
+  api deps.joda_time
+
+  //endregion
+
   //region Reactive extensions
 
   api deps.rx.android

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-data class LoginDto(
+class LoginDto(
 
   @get:JsonProperty("access_token")
   var accessToken: String = ""

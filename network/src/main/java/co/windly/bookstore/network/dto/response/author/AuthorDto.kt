@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-data class AuthorDto(
+class AuthorDto(
 
   @get:JsonProperty("id")
   var id: Long = 0L,

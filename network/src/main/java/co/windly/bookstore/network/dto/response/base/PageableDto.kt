@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-data class PageableDto<T>(
+class PageableDto<T>(
 
   @get:JsonProperty("next")
   var next: String? = null,

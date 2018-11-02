@@ -4,10 +4,12 @@ package co.windly.bookstore.network
 import co.windly.bookstore.network.manager.AccountNetworkManager
 import co.windly.bookstore.network.manager.AuthorNetworkManager
 import co.windly.bookstore.network.manager.BindingNetworkManager
+import co.windly.bookstore.network.manager.BookNetworkManager
 import co.windly.bookstore.network.manager.PublisherNetworkManager
 import co.windly.bookstore.network.service.AccountApi
 import co.windly.bookstore.network.service.AuthorApi
 import co.windly.bookstore.network.service.BindingApi
+import co.windly.bookstore.network.service.BookApi
 import co.windly.bookstore.network.service.PublisherApi
 import co.windly.bookstore.utility.BuildConfig.SERVER_CONNECTION_TIMEOUT
 import co.windly.bookstore.utility.BuildConfig.SERVER_LOGGING_LEVEL
@@ -32,6 +34,8 @@ val networkModule = module {
 
   single { AuthorNetworkManager(get()) }
 
+  single { BookNetworkManager(get()) }
+
   single { BindingNetworkManager(get()) }
 
   single { PublisherNetworkManager(get()) }
@@ -43,6 +47,8 @@ val networkModule = module {
   single { get<Retrofit>().create(AccountApi::class.java) }
 
   single { get<Retrofit>().create(AuthorApi::class.java) }
+
+  single { get<Retrofit>().create(BookApi::class.java) }
 
   single { get<Retrofit>().create(BindingApi::class.java) }
 
