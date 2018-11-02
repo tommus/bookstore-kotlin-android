@@ -5,6 +5,7 @@ import co.windly.bookstore.persistence.database.AndroidDatabase
 import co.windly.bookstore.persistence.manager.AccountPersistenceManager
 import co.windly.bookstore.persistence.manager.AuthorPersistenceManager
 import co.windly.bookstore.persistence.manager.BindingPersistenceManager
+import co.windly.bookstore.persistence.manager.PublisherPersistenceManager
 import co.windly.bookstore.persistence.preferences.UserCachePrefs
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module.module
@@ -18,6 +19,8 @@ val persistenceModule = module {
   single { AuthorPersistenceManager(get()) }
 
   single { BindingPersistenceManager(get()) }
+
+  single { PublisherPersistenceManager(get()) }
 
   //endregion
 
