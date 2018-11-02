@@ -3,8 +3,10 @@ package co.windly.bookstore.network
 
 import co.windly.bookstore.network.manager.AccountNetworkManager
 import co.windly.bookstore.network.manager.AuthorNetworkManager
+import co.windly.bookstore.network.manager.BindingNetworkManager
 import co.windly.bookstore.network.service.AccountApi
 import co.windly.bookstore.network.service.AuthorApi
+import co.windly.bookstore.network.service.BindingApi
 import co.windly.bookstore.utility.BuildConfig.SERVER_CONNECTION_TIMEOUT
 import co.windly.bookstore.utility.BuildConfig.SERVER_LOGGING_LEVEL
 import co.windly.bookstore.utility.BuildConfig.SERVER_READ_TIMEOUT
@@ -28,6 +30,8 @@ val networkModule = module {
 
   single { AuthorNetworkManager(get()) }
 
+  single { BindingNetworkManager(get()) }
+
   //endregion
 
   //region Api
@@ -35,6 +39,8 @@ val networkModule = module {
   single { get<Retrofit>().create(AccountApi::class.java) }
 
   single { get<Retrofit>().create(AuthorApi::class.java) }
+
+  single { get<Retrofit>().create(BindingApi::class.java) }
 
   //endregion
 

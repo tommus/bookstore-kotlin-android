@@ -2,8 +2,10 @@ package co.windly.bookstore.domain
 
 import co.windly.bookstore.domain.manager.AccountDomainManager
 import co.windly.bookstore.domain.manager.AuthorDomainManager
+import co.windly.bookstore.domain.manager.BindingDomainManager
 import co.windly.bookstore.domain.mapper.AccountModelMapper
 import co.windly.bookstore.domain.mapper.AuthorModelMapper
+import co.windly.bookstore.domain.mapper.BindingModelMapper
 import co.windly.bookstore.network.networkModule
 import co.windly.bookstore.persistence.persistenceModule
 import org.koin.dsl.module.module
@@ -25,6 +27,8 @@ class DomainModule : KoinComponent {
 
     single { AuthorDomainManager(get(), get(), get()) }
 
+    single { BindingDomainManager(get(), get(), get()) }
+
     //endregion
 
     //region Mappers
@@ -32,6 +36,8 @@ class DomainModule : KoinComponent {
     single { AccountModelMapper(get()) }
 
     single { AuthorModelMapper(get()) }
+
+    single { BindingModelMapper(get()) }
 
     //endregion
 
