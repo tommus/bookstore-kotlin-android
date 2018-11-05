@@ -6,9 +6,9 @@ EnableLogger=false
 #endregion
 
 #region Server - Common
-ServerConnectionTimeout=15
-ServerReadTimeout=20
-ServerWriteTimeout=20
+ServerConnectionTimeout=15L
+ServerReadTimeout=20L
+ServerWriteTimeout=20L
 #endregion
 
 #region Server - Development
