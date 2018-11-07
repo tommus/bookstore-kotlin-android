@@ -110,6 +110,14 @@ dependencies {
 
   //endregion
 
+  //region Fast Adapter
+
+  implementation deps.fast_adapter.core
+  implementation deps.fast_adapter.commons
+//  implementation deps.fast_adapter.extensions
+
+  //endregion
+
   //region Leak Canary
 
   debugImplementation deps.leak_canary.debug
@@ -121,7 +129,9 @@ dependencies {
   //region Ui
 
   implementation deps.androidx.appcompat
+  implementation deps.androidx.cardview
   implementation deps.androidx.constraint
+  implementation deps.androidx.recyclerview
   implementation deps.ui.material
 
   //endregion

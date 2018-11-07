@@ -11,6 +11,7 @@ versions.androidx = "1.0.0"
 versions.androidx_preferences = "1.0.4"
 versions.arch_navigation = "1.0.0-alpha06"
 versions.constraint = "1.1.2"
+versions.fast_adapter = "3.3.1"
 versions.joda_money = "1.0.1"
 versions.joda_time = "2.10.1"
 versions.koin = "1.0.1"
@@ -46,7 +47,9 @@ deps.arch = arch
 
 def androidx = [:]
 androidx.appcompat = "androidx.appcompat:appcompat:$versions.androidx"
+androidx.cardview = "androidx.cardview:cardview:$versions.androidx"
 androidx.constraint = "androidx.constraintlayout:constraintlayout:$versions.constraint"
+androidx.recyclerview = "androidx.recyclerview:recyclerview:$versions.androidx"
 deps.androidx = androidx
 
 //endregion
@@ -71,6 +74,16 @@ deps.build_versions = build_versions
 def facebook = [:]
 facebook.stetho = "com.facebook.stetho:stetho-okhttp3:$versions.stetho"
 deps.facebook = facebook
+
+//endregion
+
+//region Fast Adapter
+
+def fast_adapter = [:]
+fast_adapter.commons = "com.mikepenz:fastadapter-commons:$versions.fast_adapter"
+fast_adapter.core = "com.mikepenz:fastadapter:$versions.fast_adapter"
+//fast_adapter.extensions = "com.mikepenz:fastadapter-extensions:$versions.fast_adapter"
+deps.fast_adapter = fast_adapter
 
 //endregion
 
