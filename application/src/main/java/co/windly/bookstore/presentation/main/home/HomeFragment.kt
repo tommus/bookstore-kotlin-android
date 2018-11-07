@@ -1,4 +1,4 @@
-package co.windly.bookstore.presentation.register
+package co.windly.bookstore.presentation.main.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,14 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import co.windly.bookstore.R
 
-class RegisterFragment : Fragment() {
+class HomeFragment : Fragment() {
 
-  //region Ui
+  //region Lifecycle
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-    return inflater.inflate(R.layout.fragment_register, container, false)
+    return inflater.inflate(R.layout.fragment_home, container, false)
   }
 
   //endregion
-
 }
