@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
     // Content view.
     setContentView(R.layout.activity_main)
 
-    // Handle Toolbar
+    // Initialize toolbar.
     setSupportActionBar(toolbar)
 
     // Create account header.
@@ -101,6 +101,8 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
   }
 
   private fun materialize(item: AbstractBadgeableDrawerItem<*>): AbstractBadgeableDrawerItem<*> {
+
+    // Materialize item.
     return item
         .withTextColor(ContextCompat.getColor(this, R.color.black))
         .withIconColor(ContextCompat.getColor(this, R.color.black))
