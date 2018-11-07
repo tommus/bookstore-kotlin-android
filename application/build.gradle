@@ -123,6 +123,7 @@ dependencies {
   implementation deps.androidx.appcompat
   implementation deps.androidx.constraint
   implementation deps.ui.material
+  implementation deps.ui.material_drawer
 
   //endregion
 }
