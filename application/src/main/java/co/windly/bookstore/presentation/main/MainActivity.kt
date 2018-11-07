@@ -230,50 +230,50 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
 
   //region Navigation
 
-  private fun navOptions(): NavOptions? {
+  private fun navOptions(inclusive : Boolean): NavOptions? {
 
     // Create nav options.
     return NavOptions
       .Builder()
-      .setPopUpTo(R.id.home, false)
+      .setPopUpTo(R.id.home, inclusive)
       .build()
   }
 
-  private fun navigateToDestination(@IdRes destinationId: Int) {
+  private fun navigateToDestination(@IdRes destinationId: Int, inclusive : Boolean) {
 
     // Find controller and navigate to destination using nav options.
     findNavController(this, R.id.mainHostFragment)
-      .navigate(destinationId, null, navOptions())
+      .navigate(destinationId, null, navOptions(inclusive))
   }
 
   private fun navigateToHomeView() {
 
     // Navigate to home view.
-    navigateToDestination(R.id.home)
+    navigateToDestination(R.id.home, true)
   }
 
   private fun navigateToBooksView() {
 
     // Navigate to books view.
-    navigateToDestination(R.id.books)
+    navigateToDestination(R.id.books, false)
   }
 
   private fun navigateToBasketView() {
 
     // Navigate to basket view.
-    navigateToDestination(R.id.cart)
+    navigateToDestination(R.id.cart, false)
   }
 
   private fun navigateToSettingsView() {
 
     // Navigate to settings view.
-    navigateToDestination(R.id.settings)
+    navigateToDestination(R.id.settings, false)
   }
 
   private fun navigateToAboutView() {
 
     // Navigate to about view.
-    navigateToDestination(R.id.about)
+    navigateToDestination(R.id.about, false)
   }
 
   //endregion
