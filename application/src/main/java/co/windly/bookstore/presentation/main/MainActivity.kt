@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
     drawer?.onDrawerItemClickListener = this
 
     // Only set the active selection or active profile if we do not recreate the activity.
-    savedInstanceState?.let {
+    if(savedInstanceState == null) {
       drawer?.setSelection(MainMenuItem.HOME, false)
     }
 
