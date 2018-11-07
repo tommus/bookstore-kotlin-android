@@ -15,6 +15,10 @@ class ForgotPasswordFragment : Fragment() {
     return inflater.inflate(R.layout.fragment_forgot_password, container, false)
   }
 
+  //endregion
+
+  //region Lifecycle
+
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 

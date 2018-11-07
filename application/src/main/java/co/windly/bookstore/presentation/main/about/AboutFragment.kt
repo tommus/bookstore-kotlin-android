@@ -9,7 +9,7 @@ import co.windly.bookstore.R
 
 class AboutFragment : Fragment() {
 
-  //region Lifecycle
+  //region Ui
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     return inflater.inflate(R.layout.fragment_about, container, false)

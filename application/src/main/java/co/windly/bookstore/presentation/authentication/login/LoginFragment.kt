@@ -35,6 +35,10 @@ class LoginFragment : Fragment() {
     return inflater.inflate(R.layout.fragment_login, container, false)
   }
 
+  //endregion
+
+  //region Lifecycle
+
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
     // Configure forgot password button.

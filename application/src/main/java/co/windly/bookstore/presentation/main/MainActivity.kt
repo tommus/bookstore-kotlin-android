@@ -9,13 +9,6 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation.findNavController
 import co.windly.bookstore.R
-import co.windly.bookstore.presentation.main.definition.DrawerItemIdentifier.Companion.ABOUT
-import co.windly.bookstore.presentation.main.definition.DrawerItemIdentifier.Companion.BASKET
-import co.windly.bookstore.presentation.main.definition.DrawerItemIdentifier.Companion.BOOKS
-import co.windly.bookstore.presentation.main.definition.DrawerItemIdentifier.Companion.HOME
-import co.windly.bookstore.presentation.main.definition.DrawerItemIdentifier.Companion.PROFILE
-import co.windly.bookstore.presentation.main.definition.DrawerItemIdentifier.Companion.SETTINGS
-import co.windly.bookstore.presentation.main.definition.DrawerItemIdentifier.DrawerItemIdentifierType
 import com.mikepenz.materialdrawer.AccountHeader
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.Drawer
@@ -29,7 +22,6 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IProfile
 import kotlinx.android.synthetic.main.activity_main.toolbar
-
 
 class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
 
@@ -49,33 +41,42 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
 
     // Create the drawer.
     drawer = prepareDrawer(savedInstanceState)
+
+    // Configure drawer listener.
     drawer?.onDrawerItemClickListener = this
 
     // Only set the active selection or active profile if we do not recreate the activity.
-    if (savedInstanceState == null) {
-      drawer?.setSelection(HOME.toLong(), false)
+    savedInstanceState?.let {
+      drawer?.setSelection(MainMenuItem.HOME, false)
     }
 
-    // Update basket badge.
-    drawer?.updateBadge(BASKET.toLong(), StringHolder("0"))
+    // Update cart badge.
+    drawer?.updateBadge(MainMenuItem.BASKET, StringHolder("0"))
   }
 
   override fun onSaveInstanceState(outState: Bundle) {
-    var outState = outState
 
     // Add the values which need to be saved from the drawer to the bundle.
-    outState = drawer!!.saveInstanceState(outState)
+    var updated = drawer?.saveInstanceState(outState)
 
     // Add the values which need to be saved from the accountHeader to the bundle.
-    outState = accountHeader!!.saveInstanceState(outState)
-    super.onSaveInstanceState(outState)
+    updated = accountHeader?.saveInstanceState(updated)
+
+    super.onSaveInstanceState(updated)
   }
 
   override fun onBackPressed() {
-    if (drawer != null && drawer!!.isDrawerOpen) {
-      drawer!!.closeDrawer()
-    } else {
-      super.onBackPressed()
+    drawer?.let {
+
+      // In case if drawer is open - close it.
+      if (it.isDrawerOpen) {
+        it.closeDrawer()
+      }
+
+      // Otherwise just follow the orders of supertype.
+      else {
+        super.onBackPressed()
+      }
     }
   }
 
@@ -89,95 +90,101 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
 
     // Return drawer.
     return DrawerBuilder()
-        .withActivity(this)
-        .withToolbar(toolbar)
-        .withHasStableIds(true)
-        .withAccountHeader(accountHeader!!)
-        .addDrawerItems(*prepareDrawerItems())
-        .addStickyDrawerItems(*prepareStickyDrawerItems())
-        .withSavedInstance(savedInstanceState)
-        .withShowDrawerOnFirstLaunch(true)
-        .build()
+      .withActivity(this)
+      .withToolbar(toolbar)
+      .withHasStableIds(true)
+      .withAccountHeader(accountHeader!!)
+      .addDrawerItems(*prepareDrawerItems())
+      .addStickyDrawerItems(*prepareStickyDrawerItems())
+      .withSavedInstance(savedInstanceState)
+      .withShowDrawerOnFirstLaunch(true)
+      .build()
   }
 
   private fun materialize(item: AbstractBadgeableDrawerItem<*>): AbstractBadgeableDrawerItem<*> {
 
     // Materialize item.
     return item
-        .withTextColor(ContextCompat.getColor(this, R.color.black))
-        .withIconColor(ContextCompat.getColor(this, R.color.black))
-        .withSelectedTextColor(ContextCompat.getColor(this, R.color.primary))
-        .withSelectedIconColor(ContextCompat.getColor(this, R.color.primary))
-        .withDisabledTextColor(ContextCompat.getColor(this, R.color.black))
+      .withTextColor(ContextCompat.getColor(this, R.color.black))
+      .withIconColor(ContextCompat.getColor(this, R.color.black))
+      .withSelectedTextColor(ContextCompat.getColor(this, R.color.colorPrimary))
+      .withSelectedIconColor(ContextCompat.getColor(this, R.color.colorPrimary))
+      .withDisabledTextColor(ContextCompat.getColor(this, R.color.black))
   }
 
   private fun prepareDrawerItems(): Array<IDrawerItem<*, *>> {
     return arrayOf(
 
-        // Prepare home item.
-        materialize(
-            PrimaryDrawerItem()
-                .withName(R.string.drawer_item_home)
-                .withIcon(R.drawable.ic_home)
-                .withIconTintingEnabled(true)
-                .withIdentifier(HOME.toLong())),
+      // Prepare home item.
+      materialize(
+        PrimaryDrawerItem()
+          .withName(R.string.drawer_item_home)
+          .withIcon(R.drawable.ic_home)
+          .withIconTintingEnabled(true)
+          .withIdentifier(MainMenuItem.HOME)
+      ),
 
-        // Prepare books item.
-        materialize(
-            PrimaryDrawerItem()
-                .withName(R.string.drawer_item_books)
-                .withIcon(R.drawable.ic_books)
-                .withIconTintingEnabled(true)
-                .withIdentifier(BOOKS.toLong())),
+      // Prepare books item.
+      materialize(
+        PrimaryDrawerItem()
+          .withName(R.string.drawer_item_book_list)
+          .withIcon(R.drawable.ic_books)
+          .withIconTintingEnabled(true)
+          .withIdentifier(MainMenuItem.BOOKS)
+      ),
 
-        // Prepare basket item with badge.
-        materialize(
-            PrimaryDrawerItem()
-                .withName(R.string.drawer_item_basket)
-                .withIcon(R.drawable.ic_basket)
-                .withIconTintingEnabled(true)
-                .withIdentifier(BASKET.toLong())
-                .withBadgeStyle(
-                    BadgeStyle()
-                        .withTextColor(Color.WHITE)
-                        .withColorRes(R.color.md_red_700)))
+      // Prepare basket item with badge.
+      materialize(
+        PrimaryDrawerItem()
+          .withName(R.string.drawer_item_cart)
+          .withIcon(R.drawable.ic_basket)
+          .withIconTintingEnabled(true)
+          .withIdentifier(MainMenuItem.BASKET)
+          .withBadgeStyle(
+            BadgeStyle()
+              .withTextColor(Color.WHITE)
+              .withColorRes(R.color.colorAccent)
+          )
+      )
     )
   }
 
   private fun prepareStickyDrawerItems(): Array<IDrawerItem<*, *>> {
     return arrayOf(
 
-        // Prepare settings item.
-        materialize(
-            SecondaryDrawerItem()
-                .withName(R.string.drawer_item_settings)
-                .withIcon(R.drawable.ic_settings)
-                .withIconTintingEnabled(true)
-                .withIdentifier(SETTINGS.toLong())),
+      // Prepare settings item.
+      materialize(
+        SecondaryDrawerItem()
+          .withName(R.string.drawer_item_settings)
+          .withIcon(R.drawable.ic_settings)
+          .withIconTintingEnabled(true)
+          .withIdentifier(MainMenuItem.SETTINGS)
+      ),
 
-        // Prepare about item.
-        materialize(
-            SecondaryDrawerItem()
-                .withName(R.string.drawer_item_about)
-                .withIcon(R.drawable.ic_about)
-                .withIconTintingEnabled(true)
-                .withIdentifier(ABOUT.toLong()))
+      // Prepare about item.
+      materialize(
+        SecondaryDrawerItem()
+          .withName(R.string.drawer_item_about)
+          .withIcon(R.drawable.ic_about)
+          .withIconTintingEnabled(true)
+          .withIdentifier(MainMenuItem.ABOUT)
+      )
     )
   }
 
   override fun onItemClick(view: View?, position: Int, drawerItem: IDrawerItem<*, *>?): Boolean {
-    val identifier = drawerItem?.identifier
-    identifier?.toInt()?.let { handleMenuItemClicked(it) }
-    return false
+
+    // Handle menu item click.
+    return drawerItem?.identifier?.let { handleMenuItemClicked(it) }.let { false }
   }
 
-  private fun handleMenuItemClicked(@DrawerItemIdentifierType section: Int) {
+  private fun handleMenuItemClicked(@MainMenuItem.Definition section: Long) {
     when (section) {
-      HOME -> navigateToHomeView()
-      BOOKS -> navigateToBooksView()
-      BASKET -> navigateToBasketView()
-      SETTINGS -> navigateToSettingsView()
-      ABOUT -> navigateToAboutView()
+      MainMenuItem.HOME -> navigateToHomeView()
+      MainMenuItem.BOOKS -> navigateToBooksView()
+      MainMenuItem.BASKET -> navigateToBasketView()
+      MainMenuItem.SETTINGS -> navigateToSettingsView()
+      MainMenuItem.ABOUT -> navigateToAboutView()
       else -> {
         // Nothing to do.
       }
@@ -192,26 +199,30 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
 
   private fun prepareAccountHeader(savedInstanceState: Bundle?): AccountHeader {
 
+    // TODO: Retrieve user details.
+    val username = "John Snow"
+    val email = "john.snow@winterfell.com"
+
     // Return account header.
     return AccountHeaderBuilder()
-        .withActivity(this)
-        .withCompactStyle(false)
-        .withProfileImagesClickable(false)
-        .withSelectionListEnabledForSingleProfile(false)
-        .addProfiles(*prepareProfiles("Adrian Zalewski", "adrianzalewski03@gmail.com"))
-        .withSavedInstance(savedInstanceState)
-        .build()
+      .withActivity(this)
+      .withCompactStyle(false)
+      .withProfileImagesClickable(false)
+      .withSelectionListEnabledForSingleProfile(false)
+      .addProfiles(*prepareProfiles(username, email))
+      .withSavedInstance(savedInstanceState)
+      .build()
   }
 
   private fun prepareProfiles(name: String?, email: String?): Array<IProfile<*>> {
-    return arrayOf(
 
-        // Prepare profile item.
-        ProfileDrawerItem()
-            .withName(name)
-            .withEmail(email)
-            .withIcon(R.drawable.profile)
-            .withIdentifier(PROFILE.toLong())
+    // Prepare profile item.
+    return arrayOf(
+      ProfileDrawerItem()
+        .withName(name)
+        .withEmail(email)
+        .withIcon(R.drawable.ic_avatar_male)
+        .withIdentifier(MainMenuItem.PROFILE)
     )
   }
 
@@ -223,16 +234,16 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
 
     // Create nav options.
     return NavOptions
-        .Builder()
-        .setPopUpTo(R.id.home, false)
-        .build()
+      .Builder()
+      .setPopUpTo(R.id.home, false)
+      .build()
   }
 
   private fun navigateToDestination(@IdRes destinationId: Int) {
 
     // Find controller and navigate to destination using nav options.
     findNavController(this, R.id.mainHostFragment)
-        .navigate(destinationId, null, navOptions())
+      .navigate(destinationId, null, navOptions())
   }
 
   private fun navigateToHomeView() {
@@ -250,7 +261,7 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
   private fun navigateToBasketView() {
 
     // Navigate to basket view.
-    navigateToDestination(R.id.basket)
+    navigateToDestination(R.id.cart)
   }
 
   private fun navigateToSettingsView() {

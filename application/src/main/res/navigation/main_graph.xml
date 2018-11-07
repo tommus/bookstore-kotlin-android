@@ -20,19 +20,19 @@
 
   <fragment
     android:id="@+id/books"
-    android:name="co.windly.bookstore.presentation.main.books.BooksFragment"
+    android:name="co.windly.bookstore.presentation.main.book.list.BookListFragment"
     android:label="Books"
-    tools:layout="@layout/fragment_books"/>
+    tools:layout="@layout/fragment_book_list"/>
 
   <!-- endregion -->
 
-  <!-- region Basket -->
+  <!-- region Cart -->
 
   <fragment
-    android:id="@+id/basket"
-    android:name="co.windly.bookstore.presentation.main.basket.BasketFragment"
+    android:id="@+id/cart"
+    android:name="co.windly.bookstore.presentation.main.cart.CartFragment"
     android:label="Basket"
-    tools:layout="@layout/fragment_basket"/>
+    tools:layout="@layout/fragment_cart"/>
 
   <!-- endregion -->
 

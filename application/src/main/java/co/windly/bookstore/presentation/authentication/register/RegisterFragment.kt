@@ -17,4 +17,13 @@ class RegisterFragment : Fragment() {
 
   //endregion
 
+  //region Lifecycle
+
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+
+    // TODO:
+  }
+
+  //endregion
 }
