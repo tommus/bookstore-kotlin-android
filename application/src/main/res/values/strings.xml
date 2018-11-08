@@ -8,6 +8,13 @@
 
   <!-- endregion -->
 
+  <!-- region Common -->
+
+  <string name="common_yes">Yes</string>
+  <string name="common_no">No</string>
+
+  <!-- endregion -->
+
   <!-- region Login -->
 
   <string name="login_field_login">Login</string>
@@ -46,6 +53,12 @@
   <string name="drawer_item_about">About</string>
   <string name="drawer_open">Open</string>
   <string name="drawer_close">Close</string>
+
+  <!-- endregion -->
+
+  <!-- region Home -->
+
+  <string name="dialog_confirm_exit_title">Are you sure you want to close the application?</string>
 
   <!-- endregion -->
 
