@@ -74,21 +74,24 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
         it.closeDrawer()
       } else {
 
-        // Retrieve start destination id.
-        val homeDestinationIdentifier = findNavController(this, R.id.mainHostFragment).graph.startDestination
+          with(findNavController(this, R.id.mainHostFragment)) {
 
-        // Retrieve current destination id.
-        val currentDestinationIdentifier = findNavController(this, R.id.mainHostFragment).currentDestination?.id
+              // Retrieve start destination id.
+              val homeDestinationIdentifier = graph.startDestination
 
-        // When we've got home destination id then show exit confirmation dialog - otherwise just follow the orders of supertype.
-        when (homeDestinationIdentifier) {
-          currentDestinationIdentifier -> {
+              // Retrieve current destination id.
+              val currentDestinationIdentifier = currentDestination?.id
 
-            // Show confirmation dialog.
-            showConfirmExitDialog()
+              // When we've got home destination id then show exit confirmation dialog - otherwise just follow the orders of supertype.
+              when (homeDestinationIdentifier) {
+                  currentDestinationIdentifier -> {
+
+                      // Show confirmation dialog.
+                      showConfirmExitDialog()
+                  }
+                  else -> super.onBackPressed()
+              }
           }
-          else -> super.onBackPressed()
-        }
       }
     }
   }
