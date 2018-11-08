@@ -300,7 +300,7 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
 
     // Show confirmation exit dialog.
     MaterialDialog(this)
-        .message(R.string.dialog_confirm_exit_title)
+        .message(R.string.home_dialog_confirm_logout)
         .positiveButton(R.string.common_yes)
         .negativeButton(R.string.common_no)
         .positiveButton { closeApplication() }
