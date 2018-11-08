@@ -1,5 +1,6 @@
-package co.windly.bookstore.presentation.login
+package co.windly.bookstore.presentation.authentication.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import co.windly.bookstore.R
 import co.windly.bookstore.domain.manager.AccountDomainManager
+import co.windly.bookstore.presentation.main.MainActivity
 import co.windly.bookstore.utility.log.ItLogger
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.plusAssign
 import kotlinx.android.synthetic.main.fragment_login.forgotPasswordButton
 import kotlinx.android.synthetic.main.fragment_login.loginField
 import kotlinx.android.synthetic.main.fragment_login.passwordField
@@ -49,18 +50,23 @@ class LoginFragment : Fragment() {
     // Configure sign in button.
     signInButton.setOnClickListener {
 
+      // TODO: Move this piece of code to login account success method
+      // Navigate to main activity.
+      val intent = Intent(requireContext(), MainActivity::class.java)
+      startActivity(intent)
+
       // Retrieve credentials.
       val username = loginField.text.toString()
       val password = passwordField.text.toString()
 
       // TODO: Validation.
-
-      disposables += accountManager
-        .loginAccount(username = username, password = password)
-        .subscribe(
-          { this.handleLoginAccountSuccess() },
-          { this.handleLoginAccountError(it) }
-        )
+      // TODO: Check subscribing. It doesn't work.
+      /*disposables += accountManager
+          .loginAccount(username = username, password = password)
+          .subscribe(
+              { this.handleLoginAccountSuccess() },
+              { this.handleLoginAccountError(it) }
+          )*/
     }
 
     // Configure sign up button.

@@ -1,60 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:background="@drawable/splash_background">
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  tools:background="@drawable/splash_background">
 
   <!-- region Register Card -->
 
   <com.google.android.material.card.MaterialCardView
-      android:id="@+id/registerCard"
-      android:layout_width="@dimen/size_auto"
-      android:layout_height="wrap_content"
-      app:cardCornerRadius="@dimen/size_p4"
-      app:cardElevation="@dimen/elevation_4"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintWidth_percent="0.8">
+    android:id="@+id/registerCard"
+    android:layout_width="@dimen/size_auto"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/size_p4"
+    app:cardElevation="@dimen/elevation_4"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintWidth_percent="0.8">
 
     <!-- region Register Card Container -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clipToPadding="false"
-        android:padding="@dimen/size_p24">
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:clipToPadding="false"
+      android:padding="@dimen/size_p24">
 
       <!-- region Email -->
 
       <com.google.android.material.textfield.TextInputLayout
-          android:id="@+id/emailContainer"
-          android:layout_width="@dimen/size_auto"
-          android:layout_height="wrap_content"
-          android:hint="@string/register_email"
-          app:boxStrokeWidth="@dimen/size_p1"
-          app:layout_constraintBottom_toTopOf="@+id/usernameContainer"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintVertical_bias="0"
-          app:layout_constraintVertical_chainStyle="packed"
-          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        android:id="@+id/emailContainer"
+        android:layout_width="@dimen/size_auto"
+        android:layout_height="wrap_content"
+        android:hint="@string/register_email"
+        app:boxStrokeWidth="@dimen/size_p1"
+        app:layout_constraintBottom_toTopOf="@+id/usernameContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintVertical_chainStyle="packed"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/emailField"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionNext"
-            android:inputType="textEmailAddress"
-            android:lines="1"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+          android:id="@+id/emailField"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:imeOptions="actionNext"
+          android:inputType="textEmailAddress"
+          android:lines="1"
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
 
       </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,24 +63,24 @@
       <!-- region Username -->
 
       <com.google.android.material.textfield.TextInputLayout
-          android:id="@+id/usernameContainer"
-          android:layout_width="@dimen/size_auto"
-          android:layout_height="wrap_content"
-          android:hint="@string/register_username"
-          app:boxStrokeWidth="@dimen/size_p1"
-          app:layout_constraintBottom_toTopOf="@+id/passwordContainer"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/emailContainer"
-          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        android:id="@+id/usernameContainer"
+        android:layout_width="@dimen/size_auto"
+        android:layout_height="wrap_content"
+        android:hint="@string/register_username"
+        app:boxStrokeWidth="@dimen/size_p1"
+        app:layout_constraintBottom_toTopOf="@+id/passwordContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailContainer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/usernameField"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionNext"
-            android:inputType="text"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+          android:id="@+id/usernameField"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:imeOptions="actionNext"
+          android:inputType="text"
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
 
       </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,24 +89,24 @@
       <!-- region Password -->
 
       <com.google.android.material.textfield.TextInputLayout
-          android:id="@+id/passwordContainer"
-          android:layout_width="@dimen/size_auto"
-          android:layout_height="wrap_content"
-          android:hint="@string/register_password"
-          app:boxStrokeWidth="@dimen/size_p1"
-          app:layout_constraintBottom_toTopOf="@+id/rePasswordContainer"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/usernameContainer"
-          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        android:id="@+id/passwordContainer"
+        android:layout_width="@dimen/size_auto"
+        android:layout_height="wrap_content"
+        android:hint="@string/register_password"
+        app:boxStrokeWidth="@dimen/size_p1"
+        app:layout_constraintBottom_toTopOf="@+id/rePasswordContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameContainer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passwordField"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionNext"
-            android:inputType="textPassword"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+          android:id="@+id/passwordField"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:imeOptions="actionNext"
+          android:inputType="textPassword"
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
 
       </com.google.android.material.textfield.TextInputLayout>
 
@@ -115,24 +115,24 @@
       <!-- region Repeat password -->
 
       <com.google.android.material.textfield.TextInputLayout
-          android:id="@+id/rePasswordContainer"
-          android:layout_width="@dimen/size_auto"
-          android:layout_height="wrap_content"
-          android:hint="@string/register_re_password"
-          app:boxStrokeWidth="@dimen/size_p1"
-          app:layout_constraintBottom_toTopOf="@+id/firstNameContainer"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/passwordContainer"
-          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        android:id="@+id/rePasswordContainer"
+        android:layout_width="@dimen/size_auto"
+        android:layout_height="wrap_content"
+        android:hint="@string/register_re_password"
+        app:boxStrokeWidth="@dimen/size_p1"
+        app:layout_constraintBottom_toTopOf="@+id/firstNameContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordContainer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/rePasswordField"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionNext"
-            android:inputType="textPassword"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+          android:id="@+id/rePasswordField"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:imeOptions="actionNext"
+          android:inputType="textPassword"
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
 
       </com.google.android.material.textfield.TextInputLayout>
 
@@ -141,24 +141,24 @@
       <!-- region First name -->
 
       <com.google.android.material.textfield.TextInputLayout
-          android:id="@+id/firstNameContainer"
-          android:layout_width="@dimen/size_auto"
-          android:layout_height="wrap_content"
-          android:hint="@string/register_first_name"
-          app:boxStrokeWidth="@dimen/size_p1"
-          app:layout_constraintBottom_toTopOf="@+id/lastNameContainer"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/rePasswordContainer"
-          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        android:id="@+id/firstNameContainer"
+        android:layout_width="@dimen/size_auto"
+        android:layout_height="wrap_content"
+        android:hint="@string/register_first_name"
+        app:boxStrokeWidth="@dimen/size_p1"
+        app:layout_constraintBottom_toTopOf="@+id/lastNameContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rePasswordContainer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/firstNameField"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionNext"
-            android:inputType="textCapWords"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+          android:id="@+id/firstNameField"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:imeOptions="actionNext"
+          android:inputType="textCapWords"
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
 
       </com.google.android.material.textfield.TextInputLayout>
 
@@ -167,24 +167,24 @@
       <!-- region Last name -->
 
       <com.google.android.material.textfield.TextInputLayout
-          android:id="@+id/lastNameContainer"
-          android:layout_width="@dimen/size_auto"
-          android:layout_height="wrap_content"
-          android:hint="@string/register_last_name"
-          app:boxStrokeWidth="@dimen/size_p1"
-          app:layout_constraintBottom_toTopOf="@+id/space"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/firstNameContainer"
-          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        android:id="@+id/lastNameContainer"
+        android:layout_width="@dimen/size_auto"
+        android:layout_height="wrap_content"
+        android:hint="@string/register_last_name"
+        app:boxStrokeWidth="@dimen/size_p1"
+        app:layout_constraintBottom_toTopOf="@+id/space"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstNameContainer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/lastNameField"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionDone"
-            android:inputType="textCapWords"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
+          android:id="@+id/lastNameField"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:imeOptions="actionDone"
+          android:inputType="textCapWords"
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
 
       </com.google.android.material.textfield.TextInputLayout>
 
@@ -193,30 +193,30 @@
       <!-- region Space -->
 
       <Space
-          android:id="@+id/space"
-          android:layout_width="@dimen/size_auto"
-          android:layout_height="@dimen/size_auto"
-          app:layout_constraintBottom_toTopOf="@+id/proceedChip"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/lastNameContainer"/>
+        android:id="@+id/space"
+        android:layout_width="@dimen/size_auto"
+        android:layout_height="@dimen/size_auto"
+        app:layout_constraintBottom_toTopOf="@+id/proceedChip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lastNameContainer"/>
 
       <!-- endregion -->
 
       <!-- region Chip -->
 
       <com.google.android.material.button.MaterialButton
-          android:id="@+id/proceedChip"
-          android:layout_width="@dimen/size_auto"
-          android:layout_height="wrap_content"
-          android:backgroundTint="@color/colorPrimary"
-          android:backgroundTintMode="src_in"
-          android:text="@string/register_proceed"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintLeft_toLeftOf="parent"
-          app:layout_constraintRight_toRightOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/space"
-          style="@style/Widget.MaterialComponents.Button"/>
+        android:id="@+id/proceedChip"
+        android:layout_width="@dimen/size_auto"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTintMode="src_in"
+        android:text="@string/register_proceed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/space"
+        style="@style/Widget.MaterialComponents.Button"/>
 
       <!-- endregion -->
 

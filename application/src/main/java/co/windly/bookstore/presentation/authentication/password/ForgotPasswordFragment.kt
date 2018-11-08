@@ -1,4 +1,4 @@
-package co.windly.bookstore.presentation.password
+package co.windly.bookstore.presentation.authentication.password
 
 import android.os.Bundle
 import android.view.LayoutInflater

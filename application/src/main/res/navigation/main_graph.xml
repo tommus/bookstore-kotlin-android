@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/main_graph"
+  app:startDestination="@id/home">
+
+  <!-- region Home -->
+
+  <fragment
+    android:id="@+id/home"
+    android:name="co.windly.bookstore.presentation.main.home.HomeFragment"
+    android:label="Home"
+    tools:layout="@layout/fragment_home"/>
+
+  <!-- endregion -->
+
+  <!-- region Books -->
+
+  <fragment
+    android:id="@+id/books"
+    android:name="co.windly.bookstore.presentation.main.book.list.BookListFragment"
+    android:label="Books"
+    tools:layout="@layout/fragment_book_list"/>
+
+  <!-- endregion -->
+
+  <!-- region Cart -->
+
+  <fragment
+    android:id="@+id/cart"
+    android:name="co.windly.bookstore.presentation.main.cart.CartFragment"
+    android:label="Basket"
+    tools:layout="@layout/fragment_cart"/>
+
+  <!-- endregion -->
+
+  <!-- region Settings -->
+
+  <fragment
+    android:id="@+id/settings"
+    android:name="co.windly.bookstore.presentation.main.settings.SettingsFragment"
+    android:label="Settings"
+    tools:layout="@layout/fragment_settings"/>
+
+  <!-- endregion -->
+
+  <!-- region About -->
+
+  <fragment
+    android:id="@+id/about"
+    android:name="co.windly.bookstore.presentation.main.about.AboutFragment"
+    android:label="About"
+    tools:layout="@layout/fragment_about"/>
+
+  <!-- endregion -->
+
+</navigation>
