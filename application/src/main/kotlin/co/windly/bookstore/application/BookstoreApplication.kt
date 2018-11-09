@@ -2,6 +2,7 @@ package co.windly.bookstore.application
 
 import android.app.Application
 import co.windly.bookstore.domain.DomainModule
+import co.windly.bookstore.presentation.authentication.authenticationModule
 import co.windly.bookstore.utility.BuildConfig
 import co.windly.bookstore.utility.debug.DebugBridge
 import co.windly.bookstore.utility.log.ItLogger
@@ -37,8 +38,13 @@ class BookstoreApplication : Application() {
 
   //region Dependency Injection
 
+  private val bookstoreApp = listOf(
+    DomainModule().domainModule,
+    authenticationModule
+  )
+
   private fun initializeDependencyInjection() {
-    startKoin(this, listOf(DomainModule().domainModule))
+    startKoin(this, bookstoreApp)
   }
 
   //endregion

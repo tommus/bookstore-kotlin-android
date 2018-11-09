@@ -65,6 +65,14 @@ android {
   }
 
   //endregion
+
+  //region Source
+
+  sourceSets {
+    main.java.srcDirs += "src/main/kotlin"
+  }
+
+  //endregion
 }
 
 //endregion
