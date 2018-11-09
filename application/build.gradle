@@ -133,6 +133,7 @@ dependencies {
   implementation deps.androidx.constraint
   implementation deps.androidx.recyclerview
   implementation deps.ui.material
+  implementation deps.ui.material_dialogs
   implementation deps.ui.material_drawer
 
   //endregion

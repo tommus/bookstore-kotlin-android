@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation.findNavController
 import co.windly.bookstore.R
+import com.afollestad.materialdialogs.MaterialDialog
 import com.mikepenz.materialdrawer.AccountHeader
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.Drawer
@@ -46,7 +47,7 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
     drawer?.onDrawerItemClickListener = this
 
     // Only set the active selection or active profile if we do not recreate the activity.
-    if(savedInstanceState == null) {
+    if (savedInstanceState == null) {
       drawer?.setSelection(MainMenuItem.HOME, false)
     }
 
@@ -73,9 +74,19 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
         it.closeDrawer()
       }
 
-      // Otherwise just follow the orders of supertype.
-      else {
-        super.onBackPressed()
+      // Otherwise ask for exit confirmation.
+      else with(findNavController(this, R.id.mainHostFragment)) {
+
+        when (graph.startDestination) {
+
+          // Show confirmation dialog.
+          currentDestination?.id -> {
+            showConfirmExitDialog()
+          }
+
+          // Continue with default behavior.
+          else -> super.onBackPressed()
+        }
       }
     }
   }
@@ -230,7 +241,7 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
 
   //region Navigation
 
-  private fun navOptions(inclusive : Boolean): NavOptions? {
+  private fun navOptions(inclusive: Boolean): NavOptions? {
 
     // Create nav options.
     return NavOptions
@@ -239,7 +250,7 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
       .build()
   }
 
-  private fun navigateToDestination(@IdRes destinationId: Int, inclusive : Boolean) {
+  private fun navigateToDestination(@IdRes destinationId: Int, inclusive: Boolean) {
 
     // Find controller and navigate to destination using nav options.
     findNavController(this, R.id.mainHostFragment)
@@ -274,6 +285,31 @@ class MainActivity : AppCompatActivity(), Drawer.OnDrawerItemClickListener {
 
     // Navigate to about view.
     navigateToDestination(R.id.about, false)
+  }
+
+  //endregion
+
+  //region Dialogs
+
+  private fun showConfirmExitDialog() {
+
+    // Show confirmation exit dialog.
+    MaterialDialog(this)
+      .message(R.string.home_dialog_confirm_logout)
+      .positiveButton(R.string.common_yes)
+      .negativeButton(R.string.common_no)
+      .positiveButton { closeApplication() }
+      .show()
+  }
+
+  //endregion
+
+  //region Close Application
+
+  private fun closeApplication() {
+
+    // Close application.
+    finish()
   }
 
   //endregion

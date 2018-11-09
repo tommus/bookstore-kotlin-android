@@ -8,7 +8,7 @@ ext.deps = deps
 def versions = [:]
 versions.android_gradle_plugin = "3.2.1"
 versions.androidx = "1.0.0"
-versions.androidx_preferences = "1.0.4"
+versions.androidx_preferences = "1.0.5"
 versions.arch_navigation = "1.0.0-alpha06"
 versions.constraint = "1.1.2"
 versions.fast_adapter = "3.3.1"
@@ -18,6 +18,7 @@ versions.koin = "1.0.1"
 versions.kotlin = "1.2.71"
 versions.leak_canary = "1.6.2"
 versions.material = "1.0.0"
+versions.material_dialogs = "2.0.0-beta4"
 versions.material_drawer = "6.1.1"
 versions.model_mapper = "2.3.0"
 versions.okhttp = "2.7.5"
@@ -118,8 +119,8 @@ deps.leak_canary = leak_canary
 //region Miscellaneous
 
 def misc = [:]
-deps.androidx_preferences = "com.github.tommus.androidx-prefs:androidx-preferences:$versions.androidx_preferences"
-deps.androidx_preferences_compiler = "com.github.tommus.androidx-prefs:androidx-preferences-compiler:$versions.androidx_preferences"
+deps.androidx_preferences = "co.windly:androidxpreferences:$versions.androidx_preferences"
+deps.androidx_preferences_compiler = "co.windly:androidxpreferences-compiler:$versions.androidx_preferences"
 deps.joda_money = "org.joda:joda-money:$versions.joda_money"
 deps.joda_time = "joda-time:joda-time:$versions.joda_time"
 deps.model_mapper = "org.modelmapper:modelmapper:$versions.model_mapper"
@@ -163,6 +164,7 @@ deps.room = room
 
 def ui = [:]
 ui.material = "com.google.android.material:material:$versions.material"
+ui.material_dialogs = "com.afollestad.material-dialogs:core:$versions.material_dialogs"
 ui.material_drawer = "com.mikepenz:materialdrawer:$versions.material_drawer"
 deps.ui = ui
 
