@@ -1,0 +1,1526 @@
+{
+	"info": {
+		"_postman_id": "ee64023a-0aaa-461f-8e4c-6177afbf7d96",
+		"name": "Bookstore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Register Account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "john.snow@winterfell.pl",
+									"description": "Required. Must be a valid email address."
+								},
+								{
+									"key": "username",
+									"value": "john.snow",
+									"description": "Required. Unique. Max length: 150 characters."
+								},
+								{
+									"key": "password",
+									"value": "WinterIsComing",
+									"description": "Required. Max length: 128 characters."
+								},
+								{
+									"key": "first_name",
+									"value": "John",
+									"description": "Optional. Max length: 30 characters.",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Snow",
+									"description": "Optional. Max length: 150 characters.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/account/register/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign In Account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "john.snow",
+									"description": "Required. Unique. Max length: 150 characters."
+								},
+								{
+									"key": "password",
+									"value": "WinterIsComing",
+									"description": "Required. Max length: 128 characters."
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/account/login/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authors",
+			"item": [
+				{
+					"name": "Get author list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/authors/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"authors",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get author list schema",
+					"request": {
+						"method": "OPTIONS",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/authors/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"authors",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get author details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/authors/1/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"authors",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get author details schema",
+					"request": {
+						"method": "OPTIONS",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/authors/1/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"authors",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add an author",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "George R. R.",
+									"description": "Required. Max length: 255 characters."
+								},
+								{
+									"key": "last_name",
+									"value": "Martin",
+									"description": "Required. Max length: 255 characters."
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/authors/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"authors",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partially update existing author",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "George R. R.",
+									"description": "Optional. Max length: 255 characters."
+								},
+								{
+									"key": "last_name",
+									"value": "Martin",
+									"description": "Optional. Max length: 255 characters."
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/authors/3/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"authors",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update existing author",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "George R. R.",
+									"description": "Optional. Max length: 255 characters."
+								},
+								{
+									"key": "last_name",
+									"value": "Martin",
+									"description": "Optional. Max length: 255 characters."
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/authors/3/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"authors",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove an author",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/authors/3/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"authors",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bindings",
+			"item": [
+				{
+					"name": "Get binding list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/bindings/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"bindings",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get binding list schema",
+					"request": {
+						"method": "OPTIONS",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "john.snow",
+									"description": "Required. Unique. Max length: 150 characters."
+								},
+								{
+									"key": "password",
+									"value": "WinterIsComing",
+									"description": "Required. Max length: 128 characters."
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/bindings/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"bindings",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get binding details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/bindings/1/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"bindings",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get binding details schema",
+					"request": {
+						"method": "OPTIONS",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "john.snow",
+									"description": "Required. Unique. Max length: 150 characters."
+								},
+								{
+									"key": "password",
+									"value": "WinterIsComing",
+									"description": "Required. Max length: 128 characters."
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/bindings/1/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"bindings",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a binding",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "description",
+									"value": "miękka bez skrzydełek",
+									"description": "Required. Unique. Max length: 255 characters."
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/bindings/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"bindings",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partially update existing binding",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "description",
+									"value": "miękka bez skrzydełek",
+									"description": "Required. Unique. Max length: 255 characters."
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/bindings/2/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"bindings",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update existing binding",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "description",
+									"value": "miękka bez skrzydełek",
+									"description": "Required. Unique. Max length: 255 characters."
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/bindings/2/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"bindings",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a binding",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/bindings/2/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"bindings",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "Get book list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/books/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"books",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get book list schema",
+					"request": {
+						"method": "OPTIONS",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "john.snow",
+									"description": "Required. Unique. Max length: 150 characters."
+								},
+								{
+									"key": "password",
+									"value": "WinterIsComing",
+									"description": "Required. Max length: 128 characters."
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/books/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"books",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get book details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/books/1/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"books",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get book details schema",
+					"request": {
+						"method": "OPTIONS",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "john.snow",
+									"description": "Required. Unique. Max length: 150 characters."
+								},
+								{
+									"key": "password",
+									"value": "WinterIsComing",
+									"description": "Required. Max length: 128 characters."
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/books/1/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"books",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Stowarzyszenie umarłych poetów",
+									"description": "Required. Unique. Max length: 255 characters."
+								},
+								{
+									"key": "author",
+									"value": "1",
+									"description": "Required. Valid author id."
+								},
+								{
+									"key": "publisher",
+									"value": "1",
+									"description": "Required. Valid publisher id.",
+									"type": "text"
+								},
+								{
+									"key": "publication_year",
+									"value": "2018",
+									"description": "Required. Positive integer field.",
+									"type": "text"
+								},
+								{
+									"key": "binding",
+									"value": "1",
+									"description": "Required. Valid binding id.",
+									"type": "text"
+								},
+								{
+									"key": "pages",
+									"value": "160",
+									"description": "Required. Non-negative integer field.",
+									"type": "text"
+								},
+								{
+									"key": "format",
+									"value": "13.0x20.0 cm",
+									"description": "Required. Max length: 255 characters.",
+									"type": "text"
+								},
+								{
+									"key": "isbn",
+									"value": "978-83-7510-9306",
+									"description": "Required. Max length: 31 characters.",
+									"type": "text"
+								},
+								{
+									"key": "ean",
+									"value": "9788375109306",
+									"description": "Required. Max length: 31 characters.",
+									"type": "text"
+								},
+								{
+									"key": "release_date",
+									"value": "2012-08-15",
+									"description": "Required. Date in format YYYY-MM-dd.",
+									"type": "text"
+								},
+								{
+									"key": "available",
+									"value": "216",
+									"description": "Required. Non-negative integer field.",
+									"type": "text"
+								},
+								{
+									"key": "price_base",
+									"value": "49.99",
+									"description": "Required. Max digits: 8. Decimal places: 2.",
+									"type": "text"
+								},
+								{
+									"key": "price_discounted",
+									"value": "37.99",
+									"description": "Required. Max digits: 8. Decimal places: 2.",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Rozpoczyna się rok szkolny w Akademii Weltona, elitarnej szkole średniej o wielkich osiągnięciach i... nader surowej dyscyplinie. W miejsce odchodzącego na emeryturę nauczyciela języka angielskiego, przychodzi nowy, John Keating. Czterem zasadom Akademii, którymi są: Tradycja, Honor, Dyscyplina i Doskonałość przeciwstawia inny sposób kształcenia i wychowania młodych ludzi. Obrona własnej indywidualności, wrażliwość na poezję i umiejętność dostrzegania jej wokół siebie, radość życia i korzystanie z tego, co przynosi każdy dzień - to wartości, które próbują realizować jego uczniowie w tajnym klubie, „Stowarzyszeniu umarłych poetów”. Co zwycięży: rygorystycznie przestrzegana tradycja czy prawo do marzeń, wolności i młodzieńczego buntu?",
+									"description": "Required. Max length: 4095 characters.",
+									"type": "text"
+								},
+								{
+									"key": "cover",
+									"value": null,
+									"description": "Required. Multipart file.",
+									"type": "file"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/books/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"books",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partialy update exising book",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Stowarzyszenie umarłych poetów",
+									"description": "Optional. Unique. Max length: 255 characters."
+								},
+								{
+									"key": "author",
+									"value": "1",
+									"description": "Optional. Valid author id."
+								},
+								{
+									"key": "publisher",
+									"value": "1",
+									"description": "Optional. Valid publisher id.",
+									"type": "text"
+								},
+								{
+									"key": "publication_year",
+									"value": "2018",
+									"description": "Optional. Non-negative integer number.",
+									"type": "text"
+								},
+								{
+									"key": "binding",
+									"value": "1",
+									"description": "Optional. Valid binding id.",
+									"type": "text"
+								},
+								{
+									"key": "pages",
+									"value": "160",
+									"description": "Optional. Non-negative integer number.",
+									"type": "text"
+								},
+								{
+									"key": "format",
+									"value": "13.0x20.0 cm",
+									"description": "Optional. Max length: 255 characters.",
+									"type": "text"
+								},
+								{
+									"key": "isbn",
+									"value": "978-83-7510-9306",
+									"description": "Optional. Max length: 31 characters.",
+									"type": "text"
+								},
+								{
+									"key": "ean",
+									"value": "9788375109306",
+									"description": "Optional. Max length: 31 characters.",
+									"type": "text"
+								},
+								{
+									"key": "release_date",
+									"value": "2012-08-15",
+									"description": "Optional. Date in format YYYY-MM-dd.",
+									"type": "text"
+								},
+								{
+									"key": "available",
+									"value": "216",
+									"description": "Optional. Non-negative integer number.",
+									"type": "text"
+								},
+								{
+									"key": "price_base",
+									"value": "49.99",
+									"description": "Optional. Max digits: 8. Decimal places: 2.",
+									"type": "text"
+								},
+								{
+									"key": "price_discounted",
+									"value": "37.99",
+									"description": "Optional. Max digits: 8. Decimal places: 2.",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Rozpoczyna się rok szkolny w Akademii Weltona, elitarnej szkole średniej o wielkich osiągnięciach i... nader surowej dyscyplinie. W miejsce odchodzącego na emeryturę nauczyciela języka angielskiego, przychodzi nowy, John Keating. Czterem zasadom Akademii, którymi są: Tradycja, Honor, Dyscyplina i Doskonałość przeciwstawia inny sposób kształcenia i wychowania młodych ludzi. Obrona własnej indywidualności, wrażliwość na poezję i umiejętność dostrzegania jej wokół siebie, radość życia i korzystanie z tego, co przynosi każdy dzień - to wartości, które próbują realizować jego uczniowie w tajnym klubie, „Stowarzyszeniu umarłych poetów”. Co zwycięży: rygorystycznie przestrzegana tradycja czy prawo do marzeń, wolności i młodzieńczego buntu?",
+									"description": "Optional. Max length: 4095 characters.",
+									"type": "text"
+								},
+								{
+									"key": "cover",
+									"value": null,
+									"description": "Optional. Multipart file.",
+									"type": "file"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/books/3/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"books",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update exising book",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Stowarzyszenie umarłych poetów",
+									"description": "Required. Unique. Max length: 255 characters."
+								},
+								{
+									"key": "author",
+									"value": "1",
+									"description": "Required. Valid author id."
+								},
+								{
+									"key": "publisher",
+									"value": "1",
+									"description": "Required. Valid publisher id.",
+									"type": "text"
+								},
+								{
+									"key": "publication_year",
+									"value": "2018",
+									"description": "Required. Non-negative integer number.",
+									"type": "text"
+								},
+								{
+									"key": "binding",
+									"value": "1",
+									"description": "Required. Valid binding id.",
+									"type": "text"
+								},
+								{
+									"key": "pages",
+									"value": "160",
+									"description": "Required. Non-negative integer number.",
+									"type": "text"
+								},
+								{
+									"key": "format",
+									"value": "13.0x20.0 cm",
+									"description": "Required. Max length: 255 characters.",
+									"type": "text"
+								},
+								{
+									"key": "isbn",
+									"value": "978-83-7510-9306",
+									"description": "Required. Max length: 31 characters.",
+									"type": "text"
+								},
+								{
+									"key": "ean",
+									"value": "9788375109306",
+									"description": "Required. Max length: 31 characters.",
+									"type": "text"
+								},
+								{
+									"key": "release_date",
+									"value": "2012-08-15",
+									"description": "Required. Date in format YYYY-MM-dd.",
+									"type": "text"
+								},
+								{
+									"key": "available",
+									"value": "216",
+									"description": "Required. Non-negative integer number.",
+									"type": "text"
+								},
+								{
+									"key": "price_base",
+									"value": "49.99",
+									"description": "Required. Max digits: 8. Decimal places: 2.",
+									"type": "text"
+								},
+								{
+									"key": "price_discounted",
+									"value": "37.99",
+									"description": "Required. Max digits: 8. Decimal places: 2.",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Rozpoczyna się rok szkolny w Akademii Weltona, elitarnej szkole średniej o wielkich osiągnięciach i... nader surowej dyscyplinie. W miejsce odchodzącego na emeryturę nauczyciela języka angielskiego, przychodzi nowy, John Keating. Czterem zasadom Akademii, którymi są: Tradycja, Honor, Dyscyplina i Doskonałość przeciwstawia inny sposób kształcenia i wychowania młodych ludzi. Obrona własnej indywidualności, wrażliwość na poezję i umiejętność dostrzegania jej wokół siebie, radość życia i korzystanie z tego, co przynosi każdy dzień - to wartości, które próbują realizować jego uczniowie w tajnym klubie, „Stowarzyszeniu umarłych poetów”. Co zwycięży: rygorystycznie przestrzegana tradycja czy prawo do marzeń, wolności i młodzieńczego buntu?",
+									"description": "Required. Max length: 4095 characters.",
+									"type": "text"
+								},
+								{
+									"key": "cover",
+									"value": null,
+									"description": "Required. Multipart file.",
+									"type": "file"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/books/3/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"books",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a book",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/books/3/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"books",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Publishers",
+			"item": [
+				{
+					"name": "Get publisher list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/publishers/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"publishers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get publisher list schema",
+					"request": {
+						"method": "OPTIONS",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/publishers/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"publishers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get publisher details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/publishers/1/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"publishers",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get publisher details schema",
+					"request": {
+						"method": "OPTIONS",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/publishers/1/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"publishers",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a publisher",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Zysk i S-ka",
+									"description": "Required. Unique. Max length: 255 characters."
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/publishers/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"publishers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partially update exising publisher",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Zysk i S-ka",
+									"description": "Required. Unique. Max length: 255 characters."
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/publishers/2/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"publishers",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update exising publisher",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Zysk i S-ka",
+									"description": "Required. Unique. Max length: 255 characters."
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/publishers/2/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"publishers",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a publisher",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{server-uri}}/api/bookstore/publishers/2/",
+							"host": [
+								"{{server-uri}}"
+							],
+							"path": [
+								"api",
+								"bookstore",
+								"publishers",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
